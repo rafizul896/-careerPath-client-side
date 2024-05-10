@@ -1,12 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Login = () => {
     const { logIn, googleLogin, user, loading } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [show, setShow] = useState(false);
     const from = location.state || '/'
 
     useEffect(() => {
@@ -21,7 +23,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        
+
         try {
             const result = await logIn(email, password)
             console.log(result);
@@ -130,14 +132,20 @@ const Login = () => {
                                     Password
                                 </label>
                             </div>
-
-                            <input
-                                id='loggingPassword'
-                                autoComplete='current-password'
-                                name='password'
-                                className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
-                                type='password'
-                            />
+                            <div className="relative">
+                                <input
+                                    id='loggingPassword'
+                                    autoComplete='current-password'
+                                    name='password'
+                                    className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                                    type={show ? 'text':'password'}
+                                />
+                                <div onClick={() => setShow(!show)} className="absolute top-[30%] right-3 cursor-pointer">
+                                    {
+                                        !show ? <IoEyeOffOutline /> : <IoEyeOutline />
+                                    }
+                                </div>
+                            </div>
                         </div>
                         <div className='mt-6'>
                             <button

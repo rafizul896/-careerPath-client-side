@@ -1,13 +1,16 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Register = () => {
-    const { setUser, createUser, googleLogin, updateUserProfile, user,loading } = useAuth();
+    const { setUser, createUser, googleLogin, updateUserProfile, user, loading } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state || '/'
+    const from = location.state || '/';
+    const [show, setShow] = useState(false);
+
 
     useEffect(() => {
         if (user) {
@@ -50,7 +53,7 @@ const Register = () => {
         }
     }
 
-    if(user || loading) return;
+    if (user || loading) return;
 
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] md:my-10 lg:my-0'>
@@ -160,14 +163,20 @@ const Register = () => {
                                     Password
                                 </label>
                             </div>
-
-                            <input
-                                id='loggingPassword'
-                                autoComplete='current-password'
-                                name='password'
-                                className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
-                                type='password'
-                            />
+                            <div className="relative">
+                                <input
+                                    id='loggingPassword'
+                                    autoComplete='current-password'
+                                    name='password'
+                                    className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                                    type={show ? 'text':'password'}
+                                />
+                                 <div onClick={() => setShow(!show)} className="absolute top-[30%] right-3 cursor-pointer">
+                                    {
+                                        !show ? <IoEyeOffOutline /> : <IoEyeOutline />
+                                    }
+                                </div>
+                            </div>
                         </div>
                         <div className='mt-6'>
                             <button
