@@ -1,5 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom"
-import DatePicker from "react-datepicker";
+import { Link, useLoaderData} from "react-router-dom"
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,50 +10,45 @@ import Modal from "../../components/Modal";
 
 const JobDetails = () => {
     const [showModal, setShowModal] = useState(false);
-
-    const navigate = useNavigate()
-    const [startDate, setStartDate] = useState(new Date());
     const job = useLoaderData();
-    console.log(job)
     const { user } = useAuth();
-    const { _id, jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL } = job;
+    const today = new Date().toLocaleDateString()
+    const {  _id,jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL } = job;
 
-    // const handleFromSubmission = async (e) => {
-    //     e.preventDefault();
-    //     if (user?.email === job.user?.email) {
-    //         return toast.error('Action not permitted!')
-    //     }
-    //     const from = e.target;
-    //     const job_id = _id;
-    //     const price = parseFloat(from.price.value);
-    //     if (price < parseFloat(min_price)) {
-    //         return toast.error('Offer more or at least equal to Minimun Price.')
-    //     }
-    //     const email = from.email.value;
-    //     const comment = from.comment.value;
-    //     const status = 'Pending';
-    //     const deadline = startDate;
+    const handleFromSuumit = async (e) => {
+        e.preventDefault();
+        if (user?.email === job.user?.email) {
+            return toast.error('Action not permitted!')
+        }
+        if(today > deadline){
+            return toast.error('job deadline is over')
+        }
+        const from = e.target;
+        const name = from.name.value
+        const email = from.email.value;
+        const resumeLink= from.resumeLink.value;
+        const job_id = _id
 
-    //     const bidData = {
-    //         jobTitle, category, job_id, price, email, comment, buyer_email: job.user?.email, status, deadline
-    //     }
-    //     console.table(bidData);
+        const applyedJob = {
+            name,email,resumeLink,job_id
+        }
+        console.log(applyedJob);
 
-    //     try {
-    //         const { data } = await axios.post('http://localhost:5000/bid', bidData);
-    //         console.log(data);
-    //         if (data.acknowledged) {
-    //             toast.success('Bid Placed Successfully')
-    //             navigate('/my-bids')
-    //         }
-    //     }
-    //     catch (err) {
-    //         console.log(err?.message)
-    //         toast.error(err?.message)
-    //         from.reset()
-    //     }
+        try {
+            const { data } = await axios.post('http://localhost:5000/applyedJob', applyedJob);
+            console.log(data);
+            if (data.acknowledged) {
+                toast.success('Apply Successfully')
+                setShowModal(!showModal)
+            }
+        }
+        catch (err) {
+            console.log(err?.message)
+            toast.error(err?.message)
+            from.reset()
+        }
 
-    // }
+    }
 
     return (
         <Fragment>
@@ -109,25 +103,25 @@ const JobDetails = () => {
                 </div>
                 <Modal isVisible={showModal} showModal={showModal} setShowModal={setShowModal}>
                     <div>
-                        <form>
+                        <form onSubmit={handleFromSuumit}>
                             <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
 
                                 <div>
-                                    <label className='text-gray-700 ' htmlFor='emailAddress'>
+                                    <label className='' htmlFor='emailAddress'>
                                         Name
                                     </label>
                                     <input
-                                        id='emailAddress'
+                                        id='name'
                                         type='text'
                                         name='name'
                                         defaultValue={user?.displayName}
                                         disabled
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                        className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                     />
                                 </div>
 
                                 <div>
-                                    <label className='text-gray-700 ' htmlFor='emailAddress'>
+                                    <label className='' htmlFor='emailAddress'>
                                         Email Address
                                     </label>
                                     <input
@@ -136,23 +130,25 @@ const JobDetails = () => {
                                         name='email'
                                         defaultValue={user?.email}
                                         disabled
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                        className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                     />
                                 </div>
 
-                                <div>
-                                    <label className='text-gray-700 ' htmlFor='job_title'>
-                                        Job Title
+                                <div className="md:col-span-2">
+                                    <label className='' htmlFor='job_title'>
+                                        Resume Link
                                     </label>
                                     <input
+                                        placeholder="Submit your resume link"
                                         id='jobTitle'
-                                        name='jobTitle'
+                                        name='resumeLink'
                                         type='text'
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                        required
+                                        className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                     />
                                 </div>
 
-                                <div className='flex justify-end mt-6'>
+                                <div className='flex justify-end md:col-span-2'>
                                     <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
                                         Save
                                     </button>

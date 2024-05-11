@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllJobs = () => {
     const [filter, setFilter] = useState('')
@@ -169,7 +170,9 @@ const AllJobs = () => {
                                                     </td>
                                                     <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
                                                         <div className='inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-yellow-100/60 text-yellow-500'>
-                                                            <h2 className='text-sm font-normal'>View Details</h2>
+                                                            <Link to={`/job/${job._id}`}>
+                                                                <h2 className='text-sm font-normal'>View Details</h2>
+                                                            </Link>
                                                         </div>
                                                     </td>
                                                 </tr>)
