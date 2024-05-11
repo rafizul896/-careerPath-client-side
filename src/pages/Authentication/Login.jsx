@@ -53,7 +53,7 @@ const Login = () => {
                 <div
                     className='hidden bg-cover bg-center lg:block lg:w-1/2'
                     style={{
-                        backgroundImage: `url(${''})`,
+                        backgroundImage: `url(${'https://i.imghippo.com/files/aXSPo1715364590.svg'})`,
                     }}
                 ></div>
 

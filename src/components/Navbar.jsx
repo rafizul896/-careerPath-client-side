@@ -27,8 +27,8 @@ const Navbar = () => {
 
     const links = <>
         <NavLink to="/" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Home</NavLink>
-        <NavLink to="/allCraftItems" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>All Jobs</NavLink>
-        <NavLink to="/addCraftItem" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
+        <NavLink to="/allJobs" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>All Jobs</NavLink>
+        <NavLink to="/" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
     </>
     const handleLogOut = () => {
         logOut()
@@ -58,7 +58,7 @@ const Navbar = () => {
                     </div>
                     {
                         !user && (
-                            <Link to='login'>Login</Link>
+                            <Link to='/login'>Login</Link>
                         )
                     }
 

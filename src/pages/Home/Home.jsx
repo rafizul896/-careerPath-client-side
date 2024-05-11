@@ -1,7 +1,12 @@
+import Banner from "./Banner";
+import TabCategories from "./TabCategories";
+
 const Home = () => {
     return (
         <div>
-            Home
+            <Banner></Banner>
+            home
+            <TabCategories></TabCategories>
         </div>
     );
 };
