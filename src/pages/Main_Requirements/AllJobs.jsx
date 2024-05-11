@@ -10,7 +10,6 @@ const AllJobs = () => {
     const [sort, setSort] = useState('');
     const [search, setSearch] = useState('');
     const [searchText, setSearchText] = useState('');
-    console.log(search)
     // filter
     useEffect(() => {
         const getData = async () => {

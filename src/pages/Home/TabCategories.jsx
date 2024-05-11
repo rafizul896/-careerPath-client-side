@@ -27,9 +27,10 @@ const TabCategories = () => {
                 <div className='flex items-center justify-center'>
                     <TabList>
                         <Tab>All Jobs</Tab>
-                        <Tab>Web Development</Tab>
-                        <Tab>Graphics Design</Tab>
-                        <Tab>Digital Marketing</Tab>
+                        <Tab>On Site</Tab>
+                        <Tab>Remote</Tab>
+                        <Tab>Part-Time</Tab>
+                        <Tab>Hybrid</Tab>
                     </TabList>
                 </div>
 
@@ -45,7 +46,7 @@ const TabCategories = () => {
                 <TabPanel>
                     <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
                         {
-                            jobs.filter(j => j.category === 'Web Development').map(job => (
+                            jobs.filter(j => j.category === 'On Site').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
                             ))
                         }
@@ -54,7 +55,7 @@ const TabCategories = () => {
                 <TabPanel>
                     <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
                         {
-                            jobs.filter(j => j.category === 'Graphics Design').map(job => (
+                            jobs.filter(j => j.category === 'Remote').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
                             ))
                         }
@@ -63,7 +64,16 @@ const TabCategories = () => {
                 <TabPanel>
                     <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
                         {
-                            jobs.filter(j => j.category === 'Digital Marketing').map(job => (
+                            jobs.filter(j => j.category === 'Part-Time').map(job => (
+                                <JobCard key={job._id} job={job}></JobCard>
+                            ))
+                        }
+                    </div>
+                </TabPanel>
+                <TabPanel>
+                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+                        {
+                            jobs.filter(j => j.category === 'Hybrid').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
                             ))
                         }

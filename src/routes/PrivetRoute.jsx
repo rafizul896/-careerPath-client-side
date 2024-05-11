@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const PrivetRoute = ({ children }) => {
     const { user, loading } = useAuth();
     if (loading) {
-        <Loader></Loader>
+        return <Loader></Loader>
     }
     if (user) {
         return children;
