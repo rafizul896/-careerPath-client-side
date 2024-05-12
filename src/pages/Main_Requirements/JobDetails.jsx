@@ -1,4 +1,4 @@
-import { Link, useLoaderData} from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -13,31 +13,32 @@ const JobDetails = () => {
     const job = useLoaderData();
     const { user } = useAuth();
     const today = new Date().toLocaleDateString()
-    const {  _id,jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL } = job;
+    const { _id, jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL, applicantsNumber } = job;
 
     const handleFromSuumit = async (e) => {
         e.preventDefault();
         if (user?.email === job.user?.email) {
             return toast.error('Action not permitted!')
         }
-        if(today > deadline){
+        if (today > deadline) {
             return toast.error('job deadline is over')
         }
         const from = e.target;
         const name = from.name.value
         const email = from.email.value;
-        const resumeLink= from.resumeLink.value;
-        const job_id = _id
+        const resumeLink = from.resumeLink.value;
+        const job_id = _id;
+        const applicationDate = today;
 
         const applyedJob = {
-            name,email,resumeLink,job_id
+            name, email, resumeLink, job_id,jobTitle,category,applicationDate,salaryRange
         }
         console.log(applyedJob);
 
         try {
             const { data } = await axios.post('http://localhost:5000/applyedJob', applyedJob);
-            console.log(data);
             if (data.acknowledged) {
+                axios.patch(`http://localhost:5000/jobs/${_id}`,{applicantsNumber: applicantsNumber+1},{withCredentials:true})
                 toast.success('Apply Successfully')
                 setShowModal(!showModal)
             }
@@ -93,7 +94,7 @@ const JobDetails = () => {
                         </div>
                         <div className="flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between mt-6">
                             <p className='text-lg font-bold text-gray-600 '>
-                                Range: {salaryRange}
+                                Range: {`$${salaryRange.min_price}-$${salaryRange.max_price} per/year`}
                             </p>
                             <Link>
                                 <button onClick={() => setShowModal(!showModal)} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Apply now</button>
@@ -104,7 +105,7 @@ const JobDetails = () => {
                 <Modal isVisible={showModal} showModal={showModal} setShowModal={setShowModal}>
                     <div>
                         <form onSubmit={handleFromSuumit}>
-                            <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+                            <div className='grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2'>
 
                                 <div>
                                     <label className='' htmlFor='emailAddress'>

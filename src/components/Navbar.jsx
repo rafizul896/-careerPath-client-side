@@ -93,10 +93,10 @@ const Navbar = () => {
                                 <Link to='/addJobs' className='justify-between'>Add A Job</Link>
                             </li>
                             <li>
-                                <Link>My Jobs</Link>
+                                <Link to='/myPostedJobs'>My Jobs</Link>
                             </li>
                             <li>
-                                <Link>Applied Jobs</Link>
+                                <Link to="/myApplyedJob">Applied Jobs</Link>
                             </li>
                             <li>
                                 <Link>User Profile</Link>

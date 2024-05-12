@@ -137,7 +137,7 @@ const AllJobs = () => {
                                                     className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                                                 >
                                                     <button className='flex items-center gap-x-2'>
-                                                        <span>Salary range</span>
+                                                        <span>Salary range  Per/Year</span>
                                                     </button>
                                                 </th>
 
@@ -165,7 +165,7 @@ const AllJobs = () => {
                                                     </td>
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <div className='flex items-center gap-x-2'>
-                                                            {job.salaryRange}
+                                                            {`$${job.salaryRange.min_price}-$${job.salaryRange.max_price}`}
                                                         </div>
                                                     </td>
                                                     <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>

@@ -32,7 +32,7 @@ const AddJob = () => {
                 email,
                 name: user?.displayName,
             },
-            salaryRange: `$${min_price} - $${max_price}`
+            salaryRange: { min_price, max_price }
         }
         console.log(addJob);
 

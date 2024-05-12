@@ -20,7 +20,7 @@ const JobCard = ({ job }) => {
                 {user.name}
             </p>
             <p className='mt-2 text-sm font-bold text-gray-600 '>
-                Salary range: {salaryRange}
+                Salary range: {`${salaryRange.min_price}-${salaryRange.max_price}`}
             </p>
             <div className="flex justify-between">
                 <p className='mt-2 text-sm text-gray-600 flex items-center gap-1'>
