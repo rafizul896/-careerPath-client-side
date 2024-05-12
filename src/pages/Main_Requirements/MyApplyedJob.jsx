@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 const AllJobs = () => {
-    const {user} = useAuth()
+    const { user } = useAuth()
     const [filter, setFilter] = useState('')
     const [jobs, setJobs] = useState([]);
     // filter
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/myApplyedJob?email=${user.email}&filter=${filter}`)
+            const { data } = await axios(`http://localhost:5000/myApplyedJob?email=${user.email}&filter=${filter}`, { withCredentials: true })
             setJobs(data)
         }
         getData();
-    }, [filter,user]);
+    }, [filter, user]);
 
 
     return (
@@ -37,7 +37,7 @@ const AllJobs = () => {
                     </div>
                 </div>
                 <section className='py-5'>
-            
+
                     <div className='flex flex-col'>
                         <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
                             <div className='inline-block min-w-full py-2 align-middle'>
@@ -54,7 +54,7 @@ const AllJobs = () => {
                                                 <th scope='col' className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
                                                     <span>Application Date</span>
                                                 </th>
-                                                
+
                                                 <th
                                                     scope='col'
                                                     className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'

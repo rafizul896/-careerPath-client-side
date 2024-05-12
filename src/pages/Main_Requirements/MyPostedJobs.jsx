@@ -20,11 +20,11 @@ const MyPostedJobs = () => {
     const [deadLine, setDeadline] = useState(job.postingDate);
 
     const getData = async () => {
-        const { data } = await axios(`http://localhost:5000/job/${user?.email}`)
+        const { data } = await axios(`http://localhost:5000/job/${user?.email}`,{withCredentials: true})
         return data;
     }
 
-    const { data: jobs = [], isLoading, refetch } = useQuery({
+    const { data: jobs = [],isLoading, refetch } = useQuery({
         queryFn: () => getData(),
         queryKey: ['myJobs'],
     })
