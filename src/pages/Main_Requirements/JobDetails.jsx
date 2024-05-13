@@ -31,14 +31,14 @@ const JobDetails = () => {
         const applicationDate = today;
 
         const applyedJob = {
-            name, email, resumeLink, job_id,jobTitle,category,applicationDate,salaryRange
+            name, email, resumeLink, job_id, jobTitle, category, applicationDate, salaryRange
         }
         console.log(applyedJob);
 
         try {
             const { data } = await axios.post('http://localhost:5000/applyedJob', applyedJob);
             if (data.acknowledged) {
-                axios.patch(`http://localhost:5000/jobs/${_id}`,{applicantsNumber: applicantsNumber+1},{withCredentials:true})
+                axios.patch(`http://localhost:5000/jobs/${_id}`, { applicantsNumber: applicantsNumber + 1 }, { withCredentials: true })
                 toast.success('Apply Successfully')
                 setShowModal(!showModal)
             }
@@ -60,26 +60,19 @@ const JobDetails = () => {
                 {/* Job Details */}
                 <div className='flex-1 px-4 py-5 rounded-md shadow-md md:min-h-[350px]'>
                     <div className=''>
-                        {/* <span className='text-sm font-light'>
-                        Deadline: {new Date(deadline).toLocaleDateString()}
-                    </span>
-                    <span className='px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full '>
-                        {category}
-                    </span> */}
-
                         <h1 className='mt-2 text-2xl md:text-3xl font-semibold'>
                             {jobTitle}
                         </h1>
 
                         <div className='flex items-center gap-5'>
-                            <p className='mt-2 text-sm  text-gray-600 '>{job.user?.name}</p>
+                            <p className='mt-2 text-sm  '>{job.user?.name}</p>
                         </div>
 
                         <div className="flex gap-5">
-                            <div className='mt-2 text-sm text-gray-600 flex items-center gap-1'>
+                            <div className='mt-2 text-sm flex items-center gap-1'>
                                 <span className='text-lg'><MdOutlineWatchLater /></span> {postingDate}
                             </div>
-                            <div className='mt-2 text-sm text-gray-600 flex items-center gap-1'>
+                            <div className='mt-2 text-sm flex items-center gap-1'>
                                 <span className='text-lg'><BiSolidShoppingBag /></span> {category}
                             </div>
                         </div>
@@ -88,15 +81,26 @@ const JobDetails = () => {
                             <span className="text-lg md:text-xl font-semibold">
                                 Job Description / Responsibility
                             </span>
-                            <p className="text-justify">
+                            <p className="text-justify pt-2">
                                 {description}
                             </p>
                         </div>
-                        <div className="flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-between mt-6">
-                            <p className='text-lg font-bold text-gray-600 '>
+                        <div className="flex flex-col md:flex-row gap-10 md:items-center mt-3">
+                            <span className='md:text-lg font-semibold  '>
+                                Deadline: {new Date(deadline).toLocaleDateString()}
+                            </span>
+                            <p className='md:text-lg font-semibold  '>
+                                Number of Applicants: {applicantsNumber}
+                            </p>
+
+                        </div>
+                        <div className="mt-3">
+                            <p className='md:text-lg font-semibold  '>
                                 Range: {`$${salaryRange.min_price}-$${salaryRange.max_price} per/year`}
                             </p>
-                            <Link>
+                        </div>
+                        <div>
+                            <Link className="flex justify-end mt-3">
                                 <button onClick={() => setShowModal(!showModal)} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Apply now</button>
                             </Link>
                         </div>

@@ -23,8 +23,8 @@ const AddJob = () => {
         const max_price = from.max_price.value;
         const description = from.description.value;
         const applicantsNumber = parseInt(from.applicantsNumber.value);
-        const postingDate = new Date(postingdate).toLocaleDateString();
-        const deadline = new Date(deadLine).toLocaleDateString();
+        const postingDate = postingdate;
+        const deadline = deadLine;
 
         const addJob = {
             jobTitle, pictureURL, category, description, postingDate, deadline, applicantsNumber,
@@ -44,6 +44,7 @@ const AddJob = () => {
                     text: "Your file has added successfuly",
                     icon: "success",
                 });
+                from.reset()
             }
         }
         catch (err) {
@@ -53,56 +54,65 @@ const AddJob = () => {
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
-            <section className='p-2 md:p-6 mx-auto bg-white rounded-md shadow-md border w-full md:w-[80%] lg:w-[70%]'>
-                <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-                    Post a Job
-                </h2>
+            <section className='p-2 md:p-6 mx-auto bg-white rounded-md shadow-md border w-full md:w-[70%]'>
+                <div className="flex flex-col justify-center items-center space-y-2">
+                    <h2 className='text-2xl font-semibold capitalize '>
+                        Post a Job
+                    </h2>
+                    <p className="text-center text-lg w-[85%]">
+                        Review and manage your active job postings. Easily access details, edit descriptions, and track applications.
+                    </p>
+                </div>
+
 
                 <form onSubmit={handleAddJob}>
-                    <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+                    <div className='grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2'>
 
                         <div>
-                            <label className='text-gray-700 ' htmlFor='emailAddress'>
+                            <label className='text-black text-xl font-medium' htmlFor='emailAddress'>
                                 Name
                             </label>
                             <input
+                                required
                                 id='emailAddress'
                                 type='text'
                                 name='name'
                                 defaultValue={user?.displayName}
                                 disabled
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
 
                         <div>
-                            <label className='text-gray-700 ' htmlFor='emailAddress'>
+                            <label className='text-black text-xl font-medium' htmlFor='emailAddress'>
                                 Email Address
                             </label>
                             <input
+                                required
                                 id='emailAddress'
                                 type='email'
                                 name='email'
                                 defaultValue={user?.email}
                                 disabled
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
 
                         <div>
-                            <label className='text-gray-700 ' htmlFor='job_title'>
+                            <label className='text-black text-xl font-medium' htmlFor='job_title'>
                                 Job Title
                             </label>
                             <input
+                                required
                                 id='jobTitle'
                                 name='jobTitle'
                                 type='text'
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
 
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-gray-700 ' htmlFor='category'>
+                            <label className='text-black text-xl font-medium' htmlFor='category'>
                                 Job Category
                             </label>
                             <select
@@ -119,72 +129,76 @@ const AddJob = () => {
                         </div>
 
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-gray-700'>Posting Date</label>
+                            <label className='text-xl'>Posting Date</label>
                             <DatePicker className="border p-2 w-full rounded-md" selected={postingdate} onChange={(date) => setPostingDate(date)} />
                         </div>
 
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-gray-700'>Deadline</label>
+                            <label className='text-xl'>Deadline</label>
                             <DatePicker className="border p-2 w-full rounded-md" selected={deadLine} onChange={(date) => setDeadline(date)} />
                         </div>
 
                         <div className="md:col-span-2 ">
-                            <label className='text-gray-700 text-xl' htmlFor='min_price'>
+                            <label className='text-xl' htmlFor='min_price'>
                                 Salary range
                             </label>
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="w-full">
                                     <input
+                                        required
                                         placeholder=" Minimum Price"
                                         id='min_price'
                                         name='min_price'
                                         type='number'
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                        className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                     />
                                 </div>
 
                                 <div className="w-full">
                                     <input
+                                        required
                                         placeholder="Maximum Price"
                                         id='max_price'
                                         name='max_price'
                                         type='number'
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                        className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                     />
                                 </div>
                             </div>
                         </div>
                         <div className="mt-4">
-                            <label className='text-gray-700' htmlFor='pictureURL'>
-                                Picture URL of the Job Banner
+                            <label className='text-xl font-medium' htmlFor='pictureURL'>
+                                Picture URL of the Job
                             </label>
                             <input
+                                required
                                 id='pictureURL'
                                 name='pictureURL'
                                 type='text'
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
                         <div className="mt-4">
-                            <label className='text-gray-700' htmlFor='applicantsNumber'>
+                            <label className='text-xl font-medium' htmlFor='applicantsNumber'>
                                 Job Applicants Number
                             </label>
                             <input
+                                required
                                 value={0}
                                 id='applicantsNumber'
                                 name='applicantsNumber'
                                 type='number'
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
                     </div>
 
                     <div className='flex flex-col gap-2 mt-4'>
-                        <label className='text-gray-700 ' htmlFor='description'>
+                        <label className='text-black text-xl font-medium' htmlFor='description'>
                             Job Description
                         </label>
                         <textarea
-                            className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                            className='block w-full px-4 py-2 mt-2 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             name='description'
                             id='description'
                         ></textarea>

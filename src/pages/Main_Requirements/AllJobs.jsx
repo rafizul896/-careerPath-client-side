@@ -3,42 +3,33 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const AllJobs = () => {
-    const [filter, setFilter] = useState('')
     const [count, setCount] = useState('')
     const [jobs, setJobs] = useState([]);
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1)
-    const [sort, setSort] = useState('');
     const [search, setSearch] = useState('');
     const [searchText, setSearchText] = useState('');
     // filter
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/all-jobs?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`)
+            const { data } = await axios(`http://localhost:5000/all-jobs?page=${currentPage}&size=${itemsPerPage}&search=${search}`)
             setJobs(data)
         }
         getData();
-    }, [itemsPerPage, currentPage, filter, sort, search]);
+    }, [itemsPerPage, currentPage, search]);
 
     useEffect(() => {
         const getCount = async () => {
-            const { data } = await axios(`http://localhost:5000/jobs-count?filter=${filter}&search=${search}`)
+            const { data } = await axios(`http://localhost:5000/jobs-count?search=${search}`)
             setCount(data.count)
         }
         getCount()
-    }, [filter, search])
+    }, [search])
     const pages = [...Array(Math.ceil(count / itemsPerPage)).keys()].map(e => e + 1)
     // handle pagination button
     const handlePaginationButton = (value) => {
         setCurrentPage(value)
         console.log(value)
-    }
-    // reset
-    const handleReset = () => {
-        setFilter('');
-        setSort('');
-        setSearchText('')
-        setSearch('')
     }
     // search
     const handleSearch = e => {
@@ -51,21 +42,6 @@ const AllJobs = () => {
         <div className='container py-10 mx-auto flex flex-col justify-between'>
             <div>
                 <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
-                    <div>
-                        <select
-                            onChange={e => { setFilter(e.target.value); setCurrentPage(1) }}
-                            value={filter}
-                            name='category'
-                            id='category'
-                            className='border p-4 rounded-lg'
-                        >
-                            <option value=''>All Jobs</option>
-                            <option value='On Site'>On Site</option>
-                            <option value='Remote'>Remote</option>
-                            <option value='Part-Time'>Part-Time</option>
-                            <option value='Hybrid'>Hybrid</option>
-                        </select>
-                    </div>
 
                     <form onSubmit={handleSearch}>
                         <div className='flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>
@@ -79,35 +55,14 @@ const AllJobs = () => {
                                 aria-label='Enter Job Title'
                             />
 
-                            <button className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
-                                Search
+                            <button className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                                Find jobs
                             </button>
                         </div>
                     </form>
-                    <div className="flex gap-14 md:gap-5 justify-between">
-                        <select
-                            onChange={e => {
-                                setSort(e.target.value)
-                            }}
-                            value={sort}
-                            name='category'
-                            id='category'
-                            className='border p-4 rounded-md'
-                        >
-                            <option value=''>Sort By Deadline</option>
-                            <option value='dsc'>Descending</option>
-                            <option value='asc'>Ascending</option>
-                        </select>
-                        <button onClick={handleReset} className='btn'>Reset</button>
-                    </div>
+
                 </div>
                 <section className='py-12'>
-                    <div className='flex items-center gap-x-3'>
-                        {/* <h2 className='text-lg font-medium text-gray-800 '>My Bids</h2>
-                <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-                    05 Bid
-                </span> */}
-                    </div>
 
                     <div className='flex flex-col'>
                         <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -157,11 +112,11 @@ const AllJobs = () => {
                                                     </td>
 
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {job.postingDate}
+                                                        {new Date(job.postingDate).toLocaleDateString()}
                                                     </td>
 
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {job.deadline}
+                                                    {new Date(job.deadline).toLocaleDateString()}
                                                     </td>
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <div className='flex items-center gap-x-2'>

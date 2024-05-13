@@ -28,7 +28,7 @@ const Navbar = () => {
     const links = <>
         <NavLink to="/" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Home</NavLink>
         <NavLink to="/allJobs" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>All Jobs</NavLink>
-        <NavLink to="/" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
+        <NavLink to="/blogs" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
     </>
     const handleLogOut = () => {
         logOut()
@@ -73,11 +73,12 @@ const Navbar = () => {
 
                     <div className='dropdown dropdown-end z-50'>
                         <div
+                            data-tip={`${user.displayName}`}
                             tabIndex={0}
                             role='button'
-                            className='btn btn-ghost btn-circle avatar'
+                            className='btn btn-ghost btn-circle avatar   tooltip hover:tooltip-open tooltip-left'
                         >
-                            <div className='w-10 rounded-full' title=''>
+                            <div className='w-10 rounded-full ' title=''>
                                 <img
                                     referrerPolicy='no-referrer'
                                     alt='User Profile Photo'
@@ -99,7 +100,7 @@ const Navbar = () => {
                                 <Link to="/myApplyedJob">Applied Jobs</Link>
                             </li>
                             <li>
-                                <Link>User Profile</Link>
+                                <Link>My Profile</Link>
                             </li>
                             <li className='mt-2'>
                                 <button onClick={handleLogOut} className='bg-gray-200 block text-center'>Logout</button>

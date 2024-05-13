@@ -2,9 +2,18 @@ import PropTypes from 'prop-types';
 // import { PiBagSimpleDuotone } from "react-icons/pi";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const JobCard = ({ job }) => {
-    const { _id,jobTitle, postingDate, salaryRange, deadline, applicantsNumber, user } = job
+    const {user} = useAuth()
+    const handleCheckLogin = () =>{
+        if(!user){
+            toast.error('You have to log in first to view details')
+        }
+    }
+
+    const { _id,jobTitle, postingDate, salaryRange, deadline, applicantsNumber} = job
     return (
         <div className='w-full max-w-sm px-4 py-5 bg-white rounded-md shadow-xl border hover:scale-[1.05] transition-all space-y-2'>
             <div className='flex items-center justify-end '>
@@ -17,7 +26,7 @@ const JobCard = ({ job }) => {
                 {jobTitle}
             </h1>
             <p className='mt-2 text-sm font-bold text-gray-600 '>
-                {user.name}
+                {job?.user.name}
             </p>
             <p className='mt-2 text-sm font-bold text-gray-600 '>
                 Salary range: {`${salaryRange.min_price}-${salaryRange.max_price}`}
@@ -32,7 +41,7 @@ const JobCard = ({ job }) => {
             </div>
 
             <Link to={`/job/${_id}`}>
-                <button className="btn btn-primary w-full mt-3 rounded-full">View Details</button>
+                <button onClick={handleCheckLogin} className="btn btn-primary w-full mt-3 rounded-full">View Details</button>
             </Link>
         </div>
     )

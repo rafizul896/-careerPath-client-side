@@ -1,21 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Login = () => {
-    const { logIn, googleLogin, user, loading } = useAuth();
+    const { logIn, googleLogin } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [show, setShow] = useState(false);
     const from = location.state || '/'
 
-    useEffect(() => {
-        if (user) {
-            navigate('/')
-        }
-    }, [navigate, user])
+
+
 
     const handleSignIn = async (e) => {
         e.preventDefault()
@@ -27,7 +24,7 @@ const Login = () => {
         try {
             const result = await logIn(email, password)
             console.log(result);
-            navigate(from, { replace: true })
+            navigate(from)
             toast.success('SignIn Successful')
         }
         catch (err) {
@@ -38,7 +35,7 @@ const Login = () => {
         try {
             await googleLogin();
             toast.success('SignIn Successful');
-            navigate(from, { replace: true })
+            navigate(from)
         }
         catch (err) {
             console.log(err);
@@ -46,7 +43,6 @@ const Login = () => {
         }
     }
 
-    if (user || loading) return
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-10'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
@@ -138,7 +134,7 @@ const Login = () => {
                                     autoComplete='current-password'
                                     name='password'
                                     className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
-                                    type={show ? 'text':'password'}
+                                    type={show ? 'text' : 'password'}
                                 />
                                 <div onClick={() => setShow(!show)} className="absolute top-[30%] right-3 cursor-pointer">
                                     {

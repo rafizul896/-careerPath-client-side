@@ -32,7 +32,7 @@ const Register = () => {
             console.log(result);
             await updateUserProfile(name, photo);
             setUser({ ...user, photoURL: photo, displayName: name })
-            navigate(from, { replace: true })
+            navigate(from)
             toast.success('SignUp Successful')
         }
         catch (err) {
@@ -44,7 +44,7 @@ const Register = () => {
     const handleSignInWithGoogle = async () => {
         try {
             await googleLogin();
-            navigate(from, { replace: true });
+            navigate(from);
             toast.success('SignIn Successful')
         }
         catch (err) {

@@ -11,7 +11,6 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
 
 const MyPostedJobs = () => {
-
     const [showModal, setShowModal] = useState(false);
     const { user } = useAuth();
     const [job, setJob] = useState({})
@@ -72,8 +71,8 @@ const MyPostedJobs = () => {
         const max_price = from.max_price.value;
         const description = from.description.value;
         const applicantsNumber = parseInt(from.applicantsNumber.value);
-        const postingDate = new Date(postingdate).toLocaleDateString();
-        const deadline = new Date(deadLine).toLocaleDateString();
+        const postingDate = postingdate;
+        const deadline = deadLine;
 
         const updateJob = {
             jobTitle, pictureURL, category, description, postingDate, deadline, applicantsNumber,
@@ -162,7 +161,7 @@ const MyPostedJobs = () => {
                                                 </td>
 
                                                 <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                    {job.deadline}
+                                                    {new Date(job.deadline).toLocaleDateString()}
                                                 </td>
 
                                                 <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
@@ -251,7 +250,7 @@ const MyPostedJobs = () => {
                                     defaultValue={category}
                                     name='category'
                                     id='category'
-                                    className='border p-2 rounded-md'
+                                    className='border p-2 rounded-md bg-white border-gray-200'
                                 >
                                     <option value=''>All Jobs</option>
                                     <option value='On Site'>On Site</option>
@@ -263,12 +262,12 @@ const MyPostedJobs = () => {
 
                             <div className='flex flex-col gap-2 '>
                                 <label className='text-gray-700'>Posting Date</label>
-                                <DatePicker className="border p-2 w-full rounded-md" selected={postingdate} onChange={(date) => setPostingDate(date)} />
+                                <DatePicker className="border p-2 w-full rounded-md bg-white border-gray-200" selected={postingdate} onChange={(date) => setPostingDate(date)} />
                             </div>
 
                             <div className='flex flex-col gap-2 '>
                                 <label className='text-gray-700'>Deadline</label>
-                                <DatePicker className="border p-2 w-full rounded-md" selected={deadLine} onChange={(date) => setDeadline(date)} />
+                                <DatePicker className="border p-2 w-full rounded-md bg-white border-gray-200" selected={deadLine} onChange={(date) => setDeadline(date)} />
                             </div>
 
                             <div className="md:col-span-2 ">
