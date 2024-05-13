@@ -6,19 +6,19 @@ import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 
 const JobCard = ({ job }) => {
-    const {user} = useAuth()
-    const handleCheckLogin = () =>{
-        if(!user){
+    const { user } = useAuth()
+    const handleCheckLogin = () => {
+        if (!user) {
             toast.error('You have to log in first to view details')
         }
     }
 
-    const { _id,jobTitle, postingDate, salaryRange, deadline, applicantsNumber} = job
+    const { _id, jobTitle, postingDate, salaryRange, deadline, applicantsNumber } = job
     return (
         <div className='w-full max-w-sm px-4 py-5 bg-white rounded-md shadow-xl border hover:scale-[1.05] transition-all space-y-2'>
             <div className='flex items-center justify-end '>
                 <span className='px-3 py-2 text-[10px] text-white uppercase bg-red-400 rounded-full '>
-                    Deadline: {deadline}
+                    Deadline: {new Date(deadline).toLocaleDateString()}
                 </span>
             </div>
 

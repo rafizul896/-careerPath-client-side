@@ -74,7 +74,7 @@ const AllJobs = () => {
                                                     </td>
 
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                        {job.applicationDate}
+                                                        {new Date(job.applicationDate).toLocaleDateString()}
                                                     </td>
 
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
