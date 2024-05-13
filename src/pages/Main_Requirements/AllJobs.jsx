@@ -40,15 +40,23 @@ const AllJobs = () => {
 
     return (
         <div className='container py-10 mx-auto flex flex-col justify-between'>
+            <div className="flex flex-col justify-center items-center space-y-2">
+                <h2 className='text-3xl font-semibold capitalize text-center'>
+                Find Your Dream Job - Explore Open Positions
+                </h2>
+                <p className="text-center md:w-[80%]">
+                Discover a wide range of exciting career opportunities across various industries. Search by job title, category, or location to find the perfect fit for your skills and experience. Apply directly from our platform and take the next step in your career journey.
+                </p>
+            </div>
             <div>
-                <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
+                <div className='flex flex-col md:flex-row justify-center items-center gap-5 mt-5'>
 
                     <form onSubmit={handleSearch}>
                         <div className='flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>
                             <input
                                 onChange={(e) => setSearchText(e.target.value)}
                                 value={searchText}
-                                className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
+                                className='px-4 md:px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                                 type='text'
                                 name='search'
                                 placeholder='Enter Job Title'
@@ -62,7 +70,7 @@ const AllJobs = () => {
                     </form>
 
                 </div>
-                <section className='py-12'>
+                <section className='py-7'>
 
                     <div className='flex flex-col'>
                         <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -116,7 +124,7 @@ const AllJobs = () => {
                                                     </td>
 
                                                     <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                    {new Date(job.deadline).toLocaleDateString()}
+                                                        {new Date(job.deadline).toLocaleDateString()}
                                                     </td>
                                                     <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                         <div className='flex items-center gap-x-2'>

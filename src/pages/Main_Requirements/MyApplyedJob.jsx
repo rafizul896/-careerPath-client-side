@@ -17,16 +17,19 @@ const AllJobs = () => {
 
 
     return (
-        <div className='w-[90%] py-10 mx-auto flex flex-col justify-between'>
+        <div className='w-[90%] py-5 mx-auto flex flex-col justify-between'>
+            <div>
+                <h1 className="text-xl font-semibold">My Applyed Jobs : </h1>
+            </div>
             <div>
                 <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
-                    <div>
+                    <div className="">
                         <select
                             onChange={e => { setFilter(e.target.value) }}
                             value={filter}
                             name='category'
                             id='category'
-                            className='border p-4 rounded-lg'
+                            className='border p-3.5 rounded-lg'
                         >
                             <option value=''>All Jobs</option>
                             <option value='On Site'>On Site</option>
