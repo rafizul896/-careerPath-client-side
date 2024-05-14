@@ -28,7 +28,7 @@ const Navbar = () => {
     const links = <>
         <NavLink to="/" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Home</NavLink>
         <NavLink to="/allJobs" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>All Jobs</NavLink>
-        <NavLink to="/blogs" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
+        <NavLink to="/blog" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
     </>
     const handleLogOut = () => {
         logOut()
@@ -48,7 +48,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex gap-2 lg:gap-0 items-center'>
                     <img className='w-auto h-7' src='' alt='' />
-                    <Link to="/" className='font-bold'>SoloSphere</Link>
+                    <Link to="/" className='font-bold'>Assignment</Link>
                 </div>
             </div>
             <div className='flex-none flex items-center gap-1 md:gap-0'>

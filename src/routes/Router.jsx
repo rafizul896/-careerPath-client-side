@@ -10,6 +10,8 @@ import JobDetails from "../pages/Main_Requirements/JobDetails";
 import PrivetRoute from "./PrivetRoute";
 import MyPostedJobs from "../pages/Main_Requirements/MyPostedJobs";
 import MyApplyedJob from "../pages/Main_Requirements/MyApplyedJob";
+import Blog from "../pages/Main_Requirements/Blog";
+import BlogDetails from "../pages/Main_Requirements/BlogDetails";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +57,15 @@ const router = createBrowserRouter([
                 element: <PrivetRoute>
                     <MyApplyedJob></MyApplyedJob>
                 </PrivetRoute>
+            },
+            {
+                path: "/blog",
+                element: <Blog></Blog>
+            },
+            {
+                path: "/blog/:id",
+                element: <BlogDetails></BlogDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
             }
         ]
     }

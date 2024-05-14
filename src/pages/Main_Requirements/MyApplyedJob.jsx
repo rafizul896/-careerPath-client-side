@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import PDFfile from "../Challenging/PDFfile";
-import { Document, PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 
 const MyApplyedJob = () => {
@@ -101,7 +101,9 @@ const MyApplyedJob = () => {
                             </div>
                         </div>
                     </section>
-                    <PDFfile jobs={jobs}></PDFfile>
+                    <PDFfile jobs={jobs}>
+                        111
+                    </PDFfile>
             </div>
         </div >
 

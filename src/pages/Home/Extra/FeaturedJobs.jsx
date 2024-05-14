@@ -16,7 +16,7 @@ const FeaturedJobs = () => {
         return data;
     }
 
-    const { data: featuredJobs = [], isLoading, isError, error } = useQuery({
+    const { data: featuredJobs = [] } = useQuery({
         queryFn: () => requests(),
         queryKey: ['featuredJobs']
     })

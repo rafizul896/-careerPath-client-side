@@ -1,15 +1,13 @@
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
-const PDFfile = ({ children,jobs }) => (
+const PDFfile = ({ children }) => (
     // console.log(children)
     
     <Document>
         <Page size="A4" style={styles.page}>
             <View style={styles.section}>
                 <Text>
-                    Hello
-                    lllllllllllll
-                    {console.log(jobs)}
+                   {children}
                 </Text>
             </View>
         </Page>
