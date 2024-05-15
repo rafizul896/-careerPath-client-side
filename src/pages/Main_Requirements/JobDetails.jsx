@@ -13,16 +13,16 @@ const JobDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const job = useLoaderData();
     const { user } = useAuth();
-    const today = new Date();
+    const today = new Date().toLocaleDateString();
     const { _id, jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL, applicantsNumber } = job;
-    const dead = new Date(deadline).toDateString()
+    const dead = new Date(deadline).toLocaleDateString()
 
     const handleFromSuumit = async (e) => {
         e.preventDefault();
         if (user?.email === job.user?.email) {
             return toast.error('Action not permitted!')
         }
-        if (today.toDateString() > dead) {
+        if (today > dead) {
             return toast.error('job deadline is over')
         }
         const from = e.target;
@@ -55,7 +55,7 @@ const JobDetails = () => {
 
     return (
         <Fragment>
-             <Helmet>
+            <Helmet>
                 <title>{jobTitle} | CareerPath</title>
             </Helmet>
             <div className="flex py-5 md:my-10 flex-col lg:flex-row justify-around gap-5 rounded-md items-center min-h-[calc(100vh-306px)] md:w-[90%] mx-auto bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')] text-black">
