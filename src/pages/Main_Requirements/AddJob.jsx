@@ -58,7 +58,7 @@ const AddJob = () => {
              <Helmet>
                 <title>Post A Job | CareerPath</title>
             </Helmet>
-            <section className='p-2 md:p-6 mx-auto bg-[#2557a7]/10 rounded-md shadow-md w-full md:w-[70%]'>
+            <section className="p-2 md:p-6 mx-auto bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')] text-black rounded-md shadow-md w-full md:w-[70%]">
                 <div className="flex flex-col justify-center items-center space-y-2">
                     <h2 className='text-2xl font-semibold capitalize '>
                         Post a Job

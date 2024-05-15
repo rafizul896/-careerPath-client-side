@@ -57,12 +57,12 @@ const JobDetails = () => {
              <Helmet>
                 <title>{jobTitle} | CareerPath</title>
             </Helmet>
-            <div className='flex my-5 flex-col lg:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:w-[90%] mx-auto '>
+            <div className="flex py-5 md:my-10 flex-col lg:flex-row justify-around gap-5 rounded-md items-center min-h-[calc(100vh-306px)] md:w-[90%] mx-auto bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')] text-black">
                 <div className="flex-1">
                     <img src={pictureURL} alt="" />
                 </div>
                 {/* Job Details */}
-                <div className='flex-1 px-4 py-5 rounded-md shadow-md md:min-h-[350px]'>
+                <div className='flex-1 px-4 py-5 rounded-md shadow md:min-h-[350px]'>
                     <div className=''>
                         <h1 className='mt-2 text-2xl md:text-3xl font-semibold'>
                             {jobTitle}
@@ -74,7 +74,7 @@ const JobDetails = () => {
 
                         <div className="flex gap-5">
                             <div className='mt-2 text-sm flex items-center gap-1'>
-                                <span className='text-lg'><MdOutlineWatchLater /></span> {postingDate}
+                                <span className='text-lg'><MdOutlineWatchLater /></span> {new Date(postingDate).toLocaleDateString()}
                             </div>
                             <div className='mt-2 text-sm flex items-center gap-1'>
                                 <span className='text-lg'><BiSolidShoppingBag /></span> {category}
@@ -105,7 +105,7 @@ const JobDetails = () => {
                         </div>
                         <div>
                             <Link className="flex justify-end mt-3">
-                                <button onClick={() => setShowModal(!showModal)} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Apply now</button>
+                                <button onClick={() => setShowModal(!showModal)} className="px-5 py-2.5 text-lg font-medium text-white bg-[#2557a7] rounded-md hover:bg-[#0d2d5e]">Apply now</button>
                             </Link>
                         </div>
                     </div>
@@ -158,7 +158,7 @@ const JobDetails = () => {
                                 </div>
 
                                 <div className='flex justify-end md:col-span-2'>
-                                    <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
+                                    <button className='py-2 px-6 text-lg font-medium text-white bg-[#2557a7] rounded-md hover:bg-[#0d2d5e]'>
                                         Save
                                     </button>
                                 </div>

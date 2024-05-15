@@ -10,7 +10,7 @@ const MyProfile = () => {
              <Helmet>
                 <title>Profile | CareerPath</title>
             </Helmet>
-            <div className="space-y-4 flex flex-col items-center justify-center shadow-xl p-14 border rounded-lg">
+            <div className="space-y-4 flex flex-col items-center justify-center shadow-xl p-14 border rounded-lg bg-[url('https://i.imghippo.com/files/zaD8u1715765852.jpg)]">
                 <div className="w-[200px] h-[200px]">
                     <img className="h-full w-full object-cover rounded-full" src={photoURL} alt="" />
                 </div>
