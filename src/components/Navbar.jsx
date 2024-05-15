@@ -48,7 +48,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex gap-2 lg:gap-0 items-center'>
                     <img className='w-auto h-7' src='' alt='' />
-                    <Link to="/" className='font-bold'>CareerPath</Link>
+                    <Link to="/" className='font-semibold md:font-bold text-2xl md:text-4xl '>CareerPath</Link>
                 </div>
             </div>
             <div className='flex-none flex items-center gap-1 md:gap-0'>

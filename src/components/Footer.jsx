@@ -4,7 +4,7 @@ const Footer = () => {
             <div className="container flex flex-col justify-between mx-auto space-y-8 lg:flex-row lg:space-y-0 pb-4">
                 <div className="lg:w-1/3">
                     <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                        <span className="self-center text-2xl font-semibold">CareerPath</span>
+                        <span className="self-center text-2xl md:text-4xl font-bold">CareerPath</span>
                     </a>
                 </div>
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
@@ -42,7 +42,7 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-3 col-span-2 md:col-span-1 pb-5 md:pb-0">
                         <h3 className="uppercase  font-semibold">Contact Us</h3>
                         <ul className="space-y-1">
                             <li>
@@ -52,8 +52,7 @@ const Footer = () => {
                                 <a rel="noopener noreferrer" href="#">Support: rafizul896@gmail.com</a>
                             </li>
                             <li className="flex gap-1">
-                                <a className="" rel="noopener noreferrer" href="#">Address: </a>
-                                <span className="">444 S. Cedros Ave <br /> Sloana Beach, California</span>
+                                <a className="" rel="noopener noreferrer" href="#">Address: Sloana Beach, California </a> 
                             </li>
                         </ul>
                     </div>
