@@ -13,21 +13,20 @@ const AllJobs = () => {
     const [search, setSearch] = useState('');
     const [searchText, setSearchText] = useState('');
     const queryClient = useQueryClient();
-    
+
     const getData = async () => {
         const { data } = await axios(`https://job-seeking-flax.vercel.app/all-jobs?page=${currentPage}&size=${itemsPerPage}&search=${search}`)
         return data;
     }
-    
-    const { data: jobs = [],isLoading } = useQuery({
+
+    const { data: jobs = [], isLoading } = useQuery({
         queryFn: () => getData(),
         queryKey: ['jobs']
     })
-    queryClient.invalidateQueries({ queryKey: ['jobs'] })
-    
+
     useEffect(() => {
-            const getCount = async () => {
-                    const { data } = await axios(`https://job-seeking-flax.vercel.app/jobs-total?search=${search}`)
+        const getCount = async () => {
+            const { data } = await axios(`https://job-seeking-flax.vercel.app/jobs-total?search=${search}`)
             setCount(data.count)
         }
         getCount()
@@ -37,7 +36,6 @@ const AllJobs = () => {
     // handle pagination button
     const handlePaginationButton = (value) => {
         setCurrentPage(value)
-        console.log(value)
     }
     // search
     const handleSearch = e => {
@@ -46,13 +44,15 @@ const AllJobs = () => {
         setSearch(text);
     }
 
-    if(isLoading){
+    if (isLoading) {
         return <Loader></Loader>
     }
+    
+    queryClient.invalidateQueries({ queryKey: ['jobs'] },)
 
     return (
         <div className='container py-10 mx-auto flex flex-col justify-between'>
-             <Helmet>
+            <Helmet>
                 <title>All Jobs | CareerPath</title>
             </Helmet>
             <div className="flex flex-col justify-center items-center space-y-2">
@@ -78,7 +78,7 @@ const AllJobs = () => {
                                 aria-label='Enter Job Title'
                             />
 
-                            <button className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                            <button className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 transition-colors duration-300 transform bg-[#2557a7] rounded-md hover:bg-[#0d2d5e] focus:bg-gray-600 focus:outline-none'>
                                 Find jobs
                             </button>
                         </div>
@@ -92,27 +92,27 @@ const AllJobs = () => {
                             <div className='inline-block min-w-full py-2 align-middle'>
                                 <div className='overflow-hidden border border-gray-200  md:rounded-lg'>
                                     <table className='min-w-full divide-y divide-gray-200'>
-                                        <thead className='bg-gray-50'>
-                                            <tr>
-                                                <th scope='col' className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                                        <thead className='bg-gray-200'>
+                                            <tr className="text-black ">
+                                                <th scope='col' className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right'>
                                                     <div className='flex items-center gap-x-3'>
                                                         <span>Job Title</span>
                                                     </div>
                                                 </th>
 
-                                                <th scope='col' className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
-                                                    <span>Posting_Date</span>
+                                                <th scope='col' className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'>
+                                                    <span>Posting Date</span>
                                                 </th>
                                                 <th
                                                     scope='col'
-                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                                 >
-                                                    <span>Application_Deadline</span>
+                                                    <span>Application Deadline</span>
                                                 </th>
 
                                                 <th
                                                     scope='col'
-                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                                 >
                                                     <button className='flex items-center gap-x-2'>
                                                         <span>Salary range  Per/Year</span>
@@ -121,7 +121,7 @@ const AllJobs = () => {
 
                                                 <th
                                                     scope='col'
-                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                                 >
                                                     Details Button
                                                 </th>
@@ -147,7 +147,7 @@ const AllJobs = () => {
                                                         </div>
                                                     </td>
                                                     <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
-                                                        <div className='inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-yellow-100/60 text-yellow-500'>
+                                                        <div className='inline-flex items-center px-4 py-1.5 rounded-full gap-x-2 bg-blue-500/20 text-[#0d2d5e]'>
                                                             <Link to={`/job/${job._id}`}>
                                                                 <h2 className='text-sm font-normal'>View Details</h2>
                                                             </Link>
@@ -167,7 +167,7 @@ const AllJobs = () => {
             <div className='flex justify-center mt-12'>
                 <button onClick={() => handlePaginationButton(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className='px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white'>
+                    className='px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#0d2d5e]  hover:text-white'>
                     <div className='flex items-center -mx-1'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -192,12 +192,12 @@ const AllJobs = () => {
                     <button
                         onClick={() => handlePaginationButton(btnNum)}
                         key={btnNum}
-                        className={`${currentPage === btnNum ? 'bg-blue-500 text-white' : ''} hidden px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
+                        className={`${currentPage === btnNum ? 'bg-[#2557a7] text-white' : ''} hidden px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-[#0d2d5e]  hover:text-white`}
                     >
                         {btnNum}
                     </button>
                 ))}
-                <select onChange={(e) => setItemsPerPage(e.target.value)} className="border border-black" value={itemsPerPage}>
+                <select onChange={(e) => setItemsPerPage(e.target.value)} className="border border-[#0d2d5e] rounded-md" value={itemsPerPage}>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -207,7 +207,7 @@ const AllJobs = () => {
                 <button
                     onClick={() => handlePaginationButton(currentPage + 1)}
                     disabled={currentPage === Math.ceil(count / itemsPerPage)}
-                    className='px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'>
+                    className='px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-[#0d2d5e] disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'>
                     <div className='flex items-center -mx-1'>
                         <span className='mx-1'>Next</span>
 

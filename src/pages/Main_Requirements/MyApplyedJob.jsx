@@ -59,21 +59,21 @@ const MyApplyedJob = () => {
                             <div className='inline-block min-w-full py-2 align-middle'>
                                 <div ref={componentPDF} className='overflow-hidden border border-gray-200  md:rounded-lg'>
                                     <table className='min-w-full divide-y divide-gray-200'>
-                                        <thead className='bg-gray-50'>
-                                            <tr>
-                                                <th scope='col' className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                                        <thead className='bg-gray-200'>
+                                            <tr className="text-black">
+                                                <th scope='col' className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right'>
                                                     <div className='flex items-center gap-x-3'>
                                                         <span>Job Title</span>
                                                     </div>
                                                 </th>
 
-                                                <th scope='col' className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                                                <th scope='col' className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'>
                                                     <span>Application Date</span>
                                                 </th>
 
                                                 <th
                                                     scope='col'
-                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                                 >
                                                     <button className='flex items-center gap-x-2'>
                                                         <span>Salary range per/year</span>
@@ -109,7 +109,7 @@ const MyApplyedJob = () => {
                         </div>
                     </div>
                     <div className="flex justify-end mt-10">
-                        <button className="btn btn-primary" onClick={handlePDF}>Download summary to PDF</button>
+                        <button className="btn bg-[#2557a7] hover:bg-[#0d2d5e] text-white" onClick={handlePDF}>Download summary to PDF</button>
                     </div>
                 </section>
             </div>

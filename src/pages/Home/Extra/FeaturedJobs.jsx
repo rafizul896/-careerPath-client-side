@@ -44,7 +44,7 @@ const FeaturedJobs = () => {
                 {
                     featuredJobs.map(job =>
                         <SwiperSlide key={job._id}>
-                            <div className='w-full mb-10 py-7 md:py-0 md:h-[20rem] flex gap-14 md:gap-0 flex-col-reverse md:flex-row items-center border border-red-500'>
+                            <div className='w-full mb-10 py-7 md:py-0 md:h-[20rem] flex gap-14 md:gap-0 flex-col-reverse md:flex-row items-center bg-[#eef1fe] rounded-md text-black'>
                                 <div className='flex-1 flex-col flex items-center justify-center w-full space-y-3'>
                                     <h1 className='text-2xl md:text-3xl font-bold md:font-semibold'>
                                         {job.jobTitle}
@@ -57,7 +57,7 @@ const FeaturedJobs = () => {
                                         {`$${job.salaryRange.min_price}-$${job.salaryRange.max_price}`}
                                     </h3>
 
-                                    <Link to={`/job/${job._id}`} className='px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-gray-600 rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'>
+                                    <Link to={`/job/${job._id}`} className='px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-[#2557a7] rounded-md lg:w-auto hover:bg-[#0d2d5e] focus:outline-none focus:bg-[#123a75]'>
                                         Learn more
                                     </Link>
 

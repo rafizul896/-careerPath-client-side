@@ -64,7 +64,7 @@ const JobCard = ({ job }) => {
             </div>
 
             <Link to={`/job/${_id}`}>
-                <button onClick={handleCheckLogin} className="btn w-full btn-primary  mt-4 rounded-ful">View Details</button>
+                <button onClick={handleCheckLogin} className="btn w-full bg-[#2557a7] hover:bg-[#0d2d5e] text-white mt-4 rounded-ful">View Details</button>
             </Link>
         </div>
     )

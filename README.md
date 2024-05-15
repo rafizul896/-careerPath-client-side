@@ -1,8 +1,23 @@
-# React + Vite
+Wibsite Name : CareerPath
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+live site link : [CareerPath](https://assignment-eleven-e0849.web.app/)
 
-Currently, two official plugins are available:
+characteristics of my website:
+ * Component-Based Architecture.
+ * Virtual DOM.
+ * JSX (JavaScript Syntax Extension).
+ * One-Way Data Binding.
+ * Fast initial Load.
+ * Real-time Functionality
+ * Data Flexibility
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Used npm package name:
+ * Swiper slider.
+ * REACT SPINNERS.
+ * React to PDF.
+ * React hot toast.
+ * React icons.
+ * React tabs.
+ * Etc.
+
+My selected category's name : assignment_category_0003

@@ -8,7 +8,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const Banner = () => {
     return (
-        <div className='py-5 mx-auto'>
+        <div className='py-3 mx-auto'>
             <Swiper
                 spaceBetween={30}
                 loop={true}
@@ -26,12 +26,12 @@ const Banner = () => {
             >
                 <SwiperSlide>
                     <div
-                        className='w-full bg-center bg-cover h-[35rem]'
+                        className='w-full bg-center bg-cover h-[35rem] rounded-lg'
                         style={{
                             backgroundImage: `url(${'https://i.imghippo.com/files/2tWOH1715667734.png'})`,
                         }}
                     >
-                        <div className='flex items-center justify-center w-full h-full bg-gray-900/50'>
+                        <div className='flex items-center justify-center w-full h-full bg-gray-900/50 rounded-lg'>
                             <div className='text-center space-y-3'>
                                 <h1 className='text-2xl md:text-3xl font-bold md:font-semibold text-white lg:text-4xl'>
                                     Find Your Dream Job Today!
@@ -44,12 +44,12 @@ const Banner = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div
-                        className='w-full bg-center bg-cover h-[35rem]'
+                        className='w-full bg-center bg-cover h-[35rem] rounded-lg'
                         style={{
                             backgroundImage: `url(${'https://i.imghippo.com/files/0putE1715667270.jpg'})`,
                         }}
                     >
-                        <div className='flex items-center justify-center w-full h-full bg-gray-900/50'>
+                        <div className='flex items-center justify-center w-full h-full bg-gray-900/50 rounded-lg'>
                             <div className='text-center space-y-3'>
                                 <h1 className='text-2xl md:text-3xl font-bold md:font-semibold text-white lg:text-4xl'>
                                     Launch Your Career Now!
@@ -63,12 +63,12 @@ const Banner = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div
-                        className='w-full bg-center bg-cover h-[35rem]'
+                        className='w-full bg-center bg-cover h-[35rem] rounded-lg'
                         style={{
                             backgroundImage: `url(${'https://i.imghippo.com/files/aUkGt1715667342.jpg'})`,
                         }}
                     >
-                        <div className='flex items-center justify-center w-full h-full bg-gray-900/50'>
+                        <div className='flex items-center justify-center w-full h-full bg-gray-900/50 rounded-lg'>
                             <div className='text-center space-y-3'>
                                 <h1 className='text-2xl md:text-3xl font-bold md:font-semibold text-white lg:text-4xl'>
                                     Ready to take the next step?

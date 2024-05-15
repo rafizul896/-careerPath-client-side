@@ -7,7 +7,7 @@ const BlogDetails = () => {
     console.log(blog)
     const { blogImg, que, answer, writer, totalLikes, postDate } = blog
     return (
-        <div className="max-w-2xl md:px-6 py-5 md:py-16 mx-auto space-y-12">
+        <div className="max-w-2xl md:px-6 py-5 md:my-16 mx-auto space-y-12 shadow-2xl">
              <Helmet>
                 <title>Blog Details | CareerPath</title>
             </Helmet>
@@ -22,14 +22,14 @@ const BlogDetails = () => {
                             <img src={writer.img} alt="" className="w-10 h-10 rounded-full object-cover" />
                             <div>
                                 <p className="text-lg font-medium">{writer.name}</p>
-                                <p className="text-gray-700">{postDate}</p>
+                                <p className="">{postDate}</p>
                             </div>
                         </div>
                         <p className="text-xl">{totalLikes} Likes</p>
                     </div>
                 </div>
                 <div className="flex flex-wrap gap-2 border-t border-dashed dark:border-gray-600"></div>
-                <div className="dark:text-gray-800">
+                <div className="">
                     <p className="text-justify">{answer}</p>
                 </div>
             </article>

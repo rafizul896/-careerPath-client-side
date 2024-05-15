@@ -21,8 +21,8 @@ const Home = () => {
             <FeaturedJobs></FeaturedJobs>
             {/*  */}
             <div>
-                <h1 className="text-center text-3xl font-bold pb-5">The only job seeker centric platform</h1>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center border py-12 px-3">
+                <h1 className="text-center text-3xl font-bold pb-8 pt-3">The only job seeker centric platform</h1>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center py-14 px-3 bg-[url('https://i.imghippo.com/files/rF1tA1713751811.jpg')] text-black rounded-md">
                     <div className="space-y-2 flex flex-col justify-center items-center">
                         <div className="text-5xl">
                             <TbClockCheck />

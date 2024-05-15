@@ -58,7 +58,7 @@ const AddJob = () => {
              <Helmet>
                 <title>Post A Job | CareerPath</title>
             </Helmet>
-            <section className='p-2 md:p-6 mx-auto bg-white rounded-md shadow-md border w-full md:w-[70%]'>
+            <section className='p-2 md:p-6 mx-auto bg-[#2557a7]/10 rounded-md shadow-md w-full md:w-[70%]'>
                 <div className="flex flex-col justify-center items-center space-y-2">
                     <h2 className='text-2xl font-semibold capitalize '>
                         Post a Job
@@ -73,7 +73,7 @@ const AddJob = () => {
                     <div className='grid grid-cols-1 gap-6 mt-10 sm:grid-cols-2'>
 
                         <div>
-                            <label className='text-black text-xl font-medium' htmlFor='emailAddress'>
+                            <label className='text-xl font-medium' htmlFor='emailAddress'>
                                 Name
                             </label>
                             <input
@@ -88,7 +88,7 @@ const AddJob = () => {
                         </div>
 
                         <div>
-                            <label className='text-black text-xl font-medium' htmlFor='emailAddress'>
+                            <label className='text-xl font-medium' htmlFor='emailAddress'>
                                 Email Address
                             </label>
                             <input
@@ -103,7 +103,7 @@ const AddJob = () => {
                         </div>
 
                         <div>
-                            <label className='text-black text-xl font-medium' htmlFor='job_title'>
+                            <label className='text-xl font-medium' htmlFor='job_title'>
                                 Job Title
                             </label>
                             <input
@@ -116,13 +116,13 @@ const AddJob = () => {
                         </div>
 
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-black text-xl font-medium' htmlFor='category'>
+                            <label className='text-xl font-medium' htmlFor='category'>
                                 Job Category
                             </label>
                             <select
                                 name='category'
                                 id='category'
-                                className='border p-2 rounded-md'
+                                className='border p-2 rounded-md bg-white border-gray-200  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             >
                                 <option value=''>All Jobs</option>
                                 <option value='On Site'>On Site</option>
@@ -134,12 +134,12 @@ const AddJob = () => {
 
                         <div className='flex flex-col gap-2 '>
                             <label className='text-xl'>Posting Date</label>
-                            <DatePicker className="border p-2 w-full rounded-md" selected={postingdate} onChange={(date) => setPostingDate(date)} />
+                            <DatePicker className="border p-2 w-full bg-white border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" selected={postingdate} onChange={(date) => setPostingDate(date)} />
                         </div>
 
                         <div className='flex flex-col gap-2 '>
                             <label className='text-xl'>Deadline</label>
-                            <DatePicker className="border p-2 w-full rounded-md" selected={deadLine} onChange={(date) => setDeadline(date)} />
+                            <DatePicker className="border p-2 w-full rounded-md bg-white border-gray-200 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" selected={deadLine} onChange={(date) => setDeadline(date)} />
                         </div>
 
                         <div className="md:col-span-2 ">
@@ -198,7 +198,7 @@ const AddJob = () => {
                     </div>
 
                     <div className='flex flex-col gap-2 mt-4'>
-                        <label className='text-black text-xl font-medium' htmlFor='description'>
+                        <label className='text-xl font-medium' htmlFor='description'>
                             Job Description
                         </label>
                         <textarea
@@ -208,7 +208,7 @@ const AddJob = () => {
                         ></textarea>
                     </div>
                     <div className='flex justify-end mt-6'>
-                        <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
+                        <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#2557a7] rounded-md hover:bg-[#0d2d5e] focus:outline-none focus:bg-gray-600'>
                             Save
                         </button>
                     </div>

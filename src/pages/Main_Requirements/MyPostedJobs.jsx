@@ -20,11 +20,11 @@ const MyPostedJobs = () => {
     const [deadLine, setDeadline] = useState(job.postingDate);
 
     const getData = async () => {
-        const { data } = await axios(`https://job-seeking-flax.vercel.app/job/${user?.email}`,{withCredentials: true})
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/job/${user?.email}`, { withCredentials: true })
         return data;
     }
 
-    const { data: jobs = [],isLoading, refetch } = useQuery({
+    const { data: jobs = [], isLoading, refetch } = useQuery({
         queryFn: () => getData(),
         queryKey: ['myJobs'],
     })
@@ -93,7 +93,7 @@ const MyPostedJobs = () => {
                 refetch()
                 setShowModal(!showModal)
             }
-            if(data?.modifiedCount === 0){
+            if (data?.modifiedCount === 0) {
                 toast.error('You have not changed any filds')
             }
         }
@@ -104,7 +104,7 @@ const MyPostedJobs = () => {
     }
     return (
         <Fragment>
-             <Helmet>
+            <Helmet>
                 <title>{user.displayName} Posted Job | CareerPath</title>
             </Helmet>
             <section className='container px-4 mx-auto pt-8'>
@@ -117,11 +117,11 @@ const MyPostedJobs = () => {
                         <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
                             <div className='overflow-hidden border border-gray-200  md:rounded-lg'>
                                 <table className='min-w-full divide-y divide-gray-200'>
-                                    <thead className='bg-gray-50'>
-                                        <tr>
+                                    <thead className='bg-gray-200'>
+                                        <tr className="text-black">
                                             <th
                                                 scope='col'
-                                                className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right'
                                             >
                                                 <div className='flex items-center gap-x-3'>
                                                     <span>Title</span>
@@ -130,14 +130,14 @@ const MyPostedJobs = () => {
 
                                             <th
                                                 scope='col'
-                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                             >
                                                 <span>Deadline</span>
                                             </th>
 
                                             <th
                                                 scope='col'
-                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                             >
                                                 <button className='flex items-center gap-x-2'>
                                                     <span>Price Range</span>
@@ -146,12 +146,12 @@ const MyPostedJobs = () => {
 
                                             <th
                                                 scope='col'
-                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'
                                             >
                                                 Category
                                             </th>
 
-                                            <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                                            <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right'>
                                                 Edit
                                             </th>
                                         </tr>
@@ -339,7 +339,7 @@ const MyPostedJobs = () => {
                             ></textarea>
                         </div>
                         <div className='flex justify-end mt-6'>
-                            <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
+                            <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#2557a7] rounded-md hover:bg-[#0d2d5e] focus:outline-none focus:bg-gray-600'>
                                 Save
                             </button>
                         </div>

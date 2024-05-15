@@ -26,9 +26,9 @@ const Navbar = () => {
     }
 
     const links = <>
-        <NavLink to="/" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Home</NavLink>
-        <NavLink to="/allJobs" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>All Jobs</NavLink>
-        <NavLink to="/blog" className={({ isActive }) => isActive ? "text-[#14a55f] text-base" : "text-base"}>Blogs</NavLink>
+        <NavLink to="/" className={({ isActive }) => isActive ? "text-[#2557a7] text-base" : "text-base"}>Home</NavLink>
+        <NavLink to="/allJobs" className={({ isActive }) => isActive ? "text-[#2557a7] text-base" : "text-base"}>All Jobs</NavLink>
+        <NavLink to="/blog" className={({ isActive }) => isActive ? "text-[#2557a7] text-base" : "text-base"}>Blogs</NavLink>
     </>
     const handleLogOut = () => {
         logOut()
@@ -76,7 +76,7 @@ const Navbar = () => {
                             data-tip={`${user.displayName}`}
                             tabIndex={0}
                             role='button'
-                            className='btn btn-ghost btn-circle avatar   tooltip hover:tooltip-open tooltip-left'
+                            className='avatar tooltip hover:tooltip-open tooltip-left'
                         >
                             <div className='w-10 rounded-full ' title=''>
                                 <img
@@ -97,7 +97,7 @@ const Navbar = () => {
                                 <Link to='/myPostedJobs'>My Jobs</Link>
                             </li>
                             <li>
-                                <Link to="/myApplyedJob">Applied Jobs</Link>
+                                <Link to="/myApplyedJob">My Applied Jobs</Link>
                             </li>
                             <li>
                                 <Link to="/myProfile">My Profile</Link>
