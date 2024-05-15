@@ -15,7 +15,7 @@ const BlogDetails = () => {
                 <div>
                     <img src={blogImg} alt="" />
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-6 px-2">
                     <h1 className="text-2xl font-bold md:tracking-tight md:text-3xl">{que}</h1>
                     <div className="flex justify-between items-center">
                         <div className="flex items-center space-x-2">
@@ -28,13 +28,13 @@ const BlogDetails = () => {
                         <p className="text-xl">{totalLikes} Likes</p>
                     </div>
                 </div>
-                <div className="flex flex-wrap gap-2 border-t border-dashed dark:border-gray-600"></div>
-                <div className="">
+                <div className="px-2 flex flex-wrap gap-2 border-t border-dashed dark:border-gray-600"></div>
+                <div className="px-2">
                     <p className="text-justify">{answer}</p>
                 </div>
             </article>
             <div className="flex border-t border-gray-600"></div>
-            <div className="flex justify-end">
+            <div className="flex justify-end px-2">
                 <button className="btn btn-active px-5 text-lg"><FaRegHeart />Like</button>
             </div>
         </div>

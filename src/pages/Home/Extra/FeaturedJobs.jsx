@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import 'swiper/css';
@@ -24,7 +24,11 @@ const FeaturedJobs = () => {
 
 
     return (
-        <div>
+        <motion.div
+            inherit={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0, transition: { delay: 1, duration: 0.5 } }}
+            viewport={{ once: false, amount: .5 }}
+        >
             <h1 className="text-center text-3xl font-bold pb-7">Top Jobs & High-Demand Jobs</h1>
             <Swiper
                 spaceBetween={30}
@@ -72,7 +76,7 @@ const FeaturedJobs = () => {
 
 
             </Swiper>
-        </div>
+        </motion.div>
     );
 };
 

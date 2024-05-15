@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import FeaturedJobs from "./Extra/FeaturedJobs";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 const Home = () => {
     const { user } = useAuth()
@@ -20,7 +21,11 @@ const Home = () => {
             {/* Exter section */}
             <FeaturedJobs></FeaturedJobs>
             {/*  */}
-            <div>
+            <motion.div
+            inherit={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.5 } }}
+            viewport={{ once: false, amount: .5 }}
+            >
                 <h1 className="text-center text-3xl font-bold pb-8 pt-3">The only job seeker centric platform</h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center py-14 px-3 bg-[url('https://i.imghippo.com/files/rF1tA1713751811.jpg')] text-black rounded-md">
                     <div className="space-y-2 flex flex-col justify-center items-center">
@@ -49,7 +54,7 @@ const Home = () => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
             {/*job matching*/}
             {
                 !user &&
@@ -59,7 +64,6 @@ const Home = () => {
                         <button className="px-5 py-4 text-lg font-medium text-white bg-[#2557a7] rounded-md hover:bg-[#0d2d5e]">Setup your profile now</button>
                     </Link>
                 </div>
-
             }
         </div>
     );

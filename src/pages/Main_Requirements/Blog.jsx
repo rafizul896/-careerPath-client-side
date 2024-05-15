@@ -19,7 +19,6 @@ const Blog = () => {
     if (isError || error) {
         return console.log(isError, error)
     }
-    console.log(blogs)
     return (
         <div className="py-5 md:py-10">
              <Helmet>

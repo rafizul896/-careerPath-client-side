@@ -3,6 +3,7 @@ import 'react-tabs/style/react-tabs.css';
 import JobCard from "../../components/JobCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const TabCategories = () => {
     const { data: jobs = [] } = useQuery({
@@ -16,10 +17,16 @@ const TabCategories = () => {
     }
 
     return (
-        <div className='container md:px-6 py-10 mx-auto'>
-            <h1 className='text-3xl font-semibold text-center lg:text-3xl capitalize'>Browse Jobs By Categpries</h1>
+        <motion.div
+            inherit={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0, transition: { delay: 0.2, duration: 0.5 } }}
+            viewport={{ once: false, amount: .5 }}
+            className='container md:px-6 py-10 mx-auto'>
+            <h1
+
+                className='text-3xl font-semibold text-center lg:text-3xl capitalize'>Browse Jobs By Categpries</h1>
             <p className='md:max-w-2xl mx-auto my-6 text-center text-gray-500'>
-            Browse our extensive selection of job postings categorized by industry, skill set, or job type.  Filter through a wide range of opportunities to find positions that match your qualifications and career goals. Narrow down your search and land your dream job faster!
+                Browse our extensive selection of job postings categorized by industry, skill set, or job type.  Filter through a wide range of opportunities to find positions that match your qualifications and career goals. Narrow down your search and land your dream job faster!
             </p>
             <Tabs>
                 <div className='flex items-center justify-center'>
@@ -78,7 +85,7 @@ const TabCategories = () => {
                     </div>
                 </TabPanel>
             </Tabs>
-        </div>
+        </motion.div>
     );
 };
 

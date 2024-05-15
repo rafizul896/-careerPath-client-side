@@ -46,7 +46,7 @@ const JobDetails = () => {
         }
         catch (err) {
             console.log(err?.message)
-            toast.error(err?.message)
+            toast.error('You have applied!')
             from.reset()
         }
 
