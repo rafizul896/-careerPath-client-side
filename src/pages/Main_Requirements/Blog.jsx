@@ -2,10 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
     const requests = async () => {
-        const { data } = await axios(`http://localhost:5000/blogs`, { withCredentials: true })
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/blogs`, { withCredentials: true })
         return data;
     }
     // get 
@@ -21,6 +22,9 @@ const Blog = () => {
     console.log(blogs)
     return (
         <div className="py-5 md:py-10">
+             <Helmet>
+                <title>Blog | CareerPath</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold">Blog</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-5 mb-14">
                 {blogs.map(blog =>

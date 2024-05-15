@@ -48,11 +48,11 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
             // token
             if (currentUser) {
-                const { data } = axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                const { data } = axios.post('https://job-seeking-flax.vercel.app/jwt', loggedUser, { withCredentials: true })
                 console.log(data)
             }
             else {
-                const { data } = axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+                const { data } = axios.post('https://job-seeking-flax.vercel.app/logout', loggedUser, { withCredentials: true })
                 console.log(data);
             }
         })

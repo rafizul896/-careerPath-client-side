@@ -5,23 +5,21 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const TabCategories = () => {
-    // const [jobs, setJobs] = useState([]);
-
     const { data: jobs = [] } = useQuery({
         queryFn: () => getData(),
-        queryKey: ['jobs']
+        queryKey: ['Alljobs']
     })
 
     const getData = async () => {
-        const { data } = await axios(`http://localhost:5000/jobs`)
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/jobs`)
         return data;
     }
 
     return (
-        <div className='container px-6 py-10 mx-auto'>
-            <h1 className='text-2xl font-semibold text-center lg:text-3xl capitalize'>Browse Jobs By Categpries</h1>
-            <p className='max-w-2xl mx-auto my-6 text-center text-gray-500'>
-                Three categories avilable for the time being. They are Eeb Development,Graphics Design and Digital Marketing. Brows them by clicking on the tabs blow.
+        <div className='container md:px-6 py-10 mx-auto'>
+            <h1 className='text-3xl font-semibold text-center lg:text-3xl capitalize'>Browse Jobs By Categpries</h1>
+            <p className='md:max-w-2xl mx-auto my-6 text-center text-gray-500'>
+            Browse our extensive selection of job postings categorized by industry, skill set, or job type.  Filter through a wide range of opportunities to find positions that match your qualifications and career goals. Narrow down your search and land your dream job faster!
             </p>
             <Tabs>
                 <div className='flex items-center justify-center'>
@@ -35,7 +33,7 @@ const TabCategories = () => {
                 </div>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5'>
                         {
                             jobs.map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
@@ -44,7 +42,7 @@ const TabCategories = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5'>
                         {
                             jobs.filter(j => j.category === 'On Site').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
@@ -53,7 +51,7 @@ const TabCategories = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5'>
                         {
                             jobs.filter(j => j.category === 'Remote').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
@@ -62,7 +60,7 @@ const TabCategories = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5'>
                         {
                             jobs.filter(j => j.category === 'Part-Time').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>
@@ -71,7 +69,7 @@ const TabCategories = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+                    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5'>
                         {
                             jobs.filter(j => j.category === 'Hybrid').map(job => (
                                 <JobCard key={job._id} job={job}></JobCard>

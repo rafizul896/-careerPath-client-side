@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
-// import { PiBagSimpleDuotone } from "react-icons/pi";
-import { MdOutlineWatchLater } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { FcCalendar } from "react-icons/fc";
+import { IoMdHeartEmpty,IoMdHeart } from "react-icons/io";
+import { useState } from 'react';
 
 const JobCard = ({ job }) => {
     const { user } = useAuth()
+    const [love,setLove] = useState(false)
     const handleCheckLogin = () => {
         if (!user) {
             toast.error('You have to log in first to view details')
@@ -15,33 +19,52 @@ const JobCard = ({ job }) => {
 
     const { _id, jobTitle, postingDate, salaryRange, deadline, applicantsNumber } = job
     return (
-        <div className='w-full max-w-sm px-4 py-5 bg-white rounded-md shadow-xl border hover:scale-[1.05] transition-all space-y-2'>
-            <div className='flex items-center justify-end '>
-                <span className='px-3 py-2 text-[10px] text-white uppercase bg-red-400 rounded-full '>
-                    Deadline: {new Date(deadline).toLocaleDateString()}
-                </span>
+        <div className='w-full max-w-sm px-3 py-6 bg-white rounded-md shadow-md hover:shadow-2xl border hover:scale-[1.025] transition-all space-y-2'>
+            <div className='flex justify-between items-center'>
+
+                <h1 className='text-xl font-semibold text-gray-800 '>
+                    {jobTitle}
+                </h1>
+
+                <div onClick={()=>setLove(!love)} className='text-2xl cursor-pointer'>
+                    {
+                        love ? 
+                        <IoMdHeart/>:
+                        <IoMdHeartEmpty />
+                    }
+
+                </div>
             </div>
 
-            <h1 className='mt-2 text-lg font-semibold text-gray-800 '>
-                {jobTitle}
-            </h1>
-            <p className='mt-2 text-sm font-bold text-gray-600 '>
-                {job?.user.name}
-            </p>
-            <p className='mt-2 text-sm font-bold text-gray-600 '>
-                Salary range: {`${salaryRange.min_price}-${salaryRange.max_price}`}
-            </p>
-            <div className="flex justify-between">
-                <p className='mt-2 text-sm text-gray-600 flex items-center gap-1'>
-                    <span className='text-lg'><MdOutlineWatchLater /></span> {postingDate}
+            <div className='flex  flex-col'>
+                <p className='text-gray-800 '>
+                    {job?.user.name}
                 </p>
-                <p className='mt-2 text-sm font-bold text-gray-600 '>
+                <p className='text-gray-600 flex items-center gap-1'>
+                    {new Date(postingDate).toLocaleDateString()}
+                </p>
+            </div>
+
+            <div className='font-medium text-gray-600 flex items-center gap-1'>
+                <span className='text-lg'><AiOutlineDollarCircle /></span>
+                <p className='flex items-center'>
+                    {<BsCurrencyDollar />}{`${salaryRange.min_price}`} to
+                    <BsCurrencyDollar />
+                    {`${salaryRange.max_price}`} Annualy
+                </p>
+            </div>
+
+            <div className="flex justify-between items-center">
+                <span className=' text-black flex items-center gap-2'>
+                    <span className='text-lg'><FcCalendar /></span>{new Date(deadline).toLocaleDateString()}
+                </span>
+                <p className=''>
                     Applicants Number: {applicantsNumber}
                 </p>
             </div>
 
             <Link to={`/job/${_id}`}>
-                <button onClick={handleCheckLogin} className="btn btn-primary w-full mt-3 rounded-full">View Details</button>
+                <button onClick={handleCheckLogin} className="btn w-full btn-primary  mt-4 rounded-ful">View Details</button>
             </Link>
         </div>
     )

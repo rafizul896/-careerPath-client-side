@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const AddJob = () => {
     const [postingdate, setPostingDate] = useState(new Date());
@@ -37,7 +38,7 @@ const AddJob = () => {
         console.log(addJob);
 
         try {
-            const { data } = await axios.post('http://localhost:5000/jobs', addJob)
+            const { data } = await axios.post('https://job-seeking-flax.vercel.app/jobs', addJob)
             if (data.acknowledged) {
                 Swal.fire({
                     title: "Success",
@@ -54,6 +55,9 @@ const AddJob = () => {
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+             <Helmet>
+                <title>Post A Job | CareerPath</title>
+            </Helmet>
             <section className='p-2 md:p-6 mx-auto bg-white rounded-md shadow-md border w-full md:w-[70%]'>
                 <div className="flex flex-col justify-center items-center space-y-2">
                     <h2 className='text-2xl font-semibold capitalize '>

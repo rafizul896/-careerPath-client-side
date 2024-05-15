@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const FeaturedJobs = () => {
     const requests = async () => {
-        const { data } = await axios(`http://localhost:5000/featuredJobs`, { withCredentials: true })
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/featuredJobs`, { withCredentials: true })
         return data;
     }
 
@@ -63,7 +63,7 @@ const FeaturedJobs = () => {
 
                                 </div>
                                 <div className="flex-1 flex justify-center">
-                                    <img className="px-3 md:mx-0 md:w-[80%] max-w-[500px]" src={job.pictureURL} alt="" />
+                                    <img className="px-3 md:mx-0 md:w-[80%] lg:max-w-[500px]" src={job.pictureURL} alt="" />
                                 </div>
                             </div>
                         </SwiperSlide>

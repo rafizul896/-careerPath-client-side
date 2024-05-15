@@ -6,11 +6,15 @@ import { IoTrophyOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import FeaturedJobs from "./Extra/FeaturedJobs";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const { user } = useAuth()
     return (
         <div className="pb-12">
+             <Helmet>
+                <title>Home | CareerPath</title>
+            </Helmet>
             <Banner></Banner>
             <TabCategories></TabCategories>
             {/* Exter section */}

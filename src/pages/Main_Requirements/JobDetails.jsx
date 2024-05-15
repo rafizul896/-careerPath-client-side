@@ -7,12 +7,13 @@ import { Fragment, useState } from "react";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { BiSolidShoppingBag } from "react-icons/bi";
 import Modal from "../../components/Modal";
+import { Helmet } from "react-helmet";
 
 const JobDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const job = useLoaderData();
     const { user } = useAuth();
-    const today = new Date().toLocaleDateString()
+    const today = new Date();
     const { _id, jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL, applicantsNumber } = job;
 
     const handleFromSuumit = async (e) => {
@@ -36,9 +37,9 @@ const JobDetails = () => {
         console.log(applyedJob);
 
         try {
-            const { data } = await axios.post('http://localhost:5000/applyedJob', applyedJob);
+            const { data } = await axios.post('https://job-seeking-flax.vercel.app/applyedJob', applyedJob);
             if (data.acknowledged) {
-                axios.patch(`http://localhost:5000/jobs/${_id}`, { applicantsNumber: applicantsNumber + 1 }, { withCredentials: true })
+                axios.patch(`https://job-seeking-flax.vercel.app/jobs/${_id}`, { applicantsNumber: applicantsNumber + 1 }, { withCredentials: true })
                 toast.success('Apply Successfully')
                 setShowModal(!showModal)
             }
@@ -53,6 +54,9 @@ const JobDetails = () => {
 
     return (
         <Fragment>
+             <Helmet>
+                <title>{jobTitle} | CareerPath</title>
+            </Helmet>
             <div className='flex my-5 flex-col lg:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:w-[90%] mx-auto '>
                 <div className="flex-1">
                     <img src={pictureURL} alt="" />

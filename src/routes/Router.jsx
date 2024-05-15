@@ -12,6 +12,7 @@ import MyPostedJobs from "../pages/Main_Requirements/MyPostedJobs";
 import MyApplyedJob from "../pages/Main_Requirements/MyApplyedJob";
 import Blog from "../pages/Main_Requirements/Blog";
 import BlogDetails from "../pages/Main_Requirements/BlogDetails";
+import MyProfile from "../pages/Main_Requirements/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
                 element: <PrivetRoute>
                     <JobDetails></JobDetails>
                 </PrivetRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({ params }) => fetch(`https://job-seeking-flax.vercel.app/jobs/${params.id}`)
             },
             {
                 path: '/myPostedJobs',
@@ -65,7 +66,13 @@ const router = createBrowserRouter([
             {
                 path: "/blog/:id",
                 element: <BlogDetails></BlogDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://job-seeking-flax.vercel.app/blogs/${params.id}`)
+            },
+            {
+                path: "/myProfile",
+                element: <PrivetRoute>
+                    <MyProfile></MyProfile>
+                </PrivetRoute>
             }
         ]
     }

@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import Modal from "../../components/Modal";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet";
 
 const MyPostedJobs = () => {
     const [showModal, setShowModal] = useState(false);
@@ -19,7 +20,7 @@ const MyPostedJobs = () => {
     const [deadLine, setDeadline] = useState(job.postingDate);
 
     const getData = async () => {
-        const { data } = await axios(`http://localhost:5000/job/${user?.email}`,{withCredentials: true})
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/job/${user?.email}`,{withCredentials: true})
         return data;
     }
 
@@ -43,7 +44,7 @@ const MyPostedJobs = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const { data } = await axios.delete(`http://localhost:5000/job/${id}`)
+                    const { data } = await axios.delete(`https://job-seeking-flax.vercel.app/job/${id}`)
                     console.log(data)
                     if (data.deletedCount > 0) {
                         Swal.fire({
@@ -81,7 +82,7 @@ const MyPostedJobs = () => {
         console.log(updateJob);
 
         try {
-            const { data } = await axios.patch(`http://localhost:5000/jobs/${job._id}`, updateJob);
+            const { data } = await axios.patch(`https://job-seeking-flax.vercel.app/jobs/${job._id}`, updateJob);
             console.log(data);
             if (data?.modifiedCount > 0) {
                 Swal.fire({
@@ -103,6 +104,9 @@ const MyPostedJobs = () => {
     }
     return (
         <Fragment>
+             <Helmet>
+                <title>{user.displayName} Posted Job | CareerPath</title>
+            </Helmet>
             <section className='container px-4 mx-auto pt-8'>
                 <div className='flex justify-center'>
                     <h2 className='text-3xl font-semibold capitalize text-center'>My Posted Jobs</h2>

@@ -48,7 +48,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex gap-2 lg:gap-0 items-center'>
                     <img className='w-auto h-7' src='' alt='' />
-                    <Link to="/" className='font-bold'>Assignment</Link>
+                    <Link to="/" className='font-bold'>CareerPath</Link>
                 </div>
             </div>
             <div className='flex-none flex items-center gap-1 md:gap-0'>
@@ -100,7 +100,7 @@ const Navbar = () => {
                                 <Link to="/myApplyedJob">Applied Jobs</Link>
                             </li>
                             <li>
-                                <Link>My Profile</Link>
+                                <Link to="/myProfile">My Profile</Link>
                             </li>
                             <li className='mt-2'>
                                 <button onClick={handleLogOut} className='bg-gray-200 block text-center'>Logout</button>

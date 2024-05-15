@@ -1,30 +1,38 @@
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet";
 
 const AllJobs = () => {
     const [count, setCount] = useState('')
-    const [jobs, setJobs] = useState([]);
+    // const [jobs, setJobs] = useState([]);
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1)
     const [search, setSearch] = useState('');
     const [searchText, setSearchText] = useState('');
-    // filter
+    const queryClient = useQueryClient();
+    
+    const getData = async () => {
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/all-jobs?page=${currentPage}&size=${itemsPerPage}&search=${search}`)
+        return data;
+    }
+    
+    const { data: jobs = [],isLoading } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['jobs']
+    })
+    queryClient.invalidateQueries({ queryKey: ['jobs'] })
+    
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/all-jobs?page=${currentPage}&size=${itemsPerPage}&search=${search}`)
-            setJobs(data)
-        }
-        getData();
-    }, [itemsPerPage, currentPage, search]);
-
-    useEffect(() => {
-        const getCount = async () => {
-            const { data } = await axios(`http://localhost:5000/jobs-count?search=${search}`)
+            const getCount = async () => {
+                    const { data } = await axios(`https://job-seeking-flax.vercel.app/jobs-total?search=${search}`)
             setCount(data.count)
         }
         getCount()
     }, [search])
+
     const pages = [...Array(Math.ceil(count / itemsPerPage)).keys()].map(e => e + 1)
     // handle pagination button
     const handlePaginationButton = (value) => {
@@ -38,14 +46,21 @@ const AllJobs = () => {
         setSearch(text);
     }
 
+    if(isLoading){
+        return <Loader></Loader>
+    }
+
     return (
         <div className='container py-10 mx-auto flex flex-col justify-between'>
+             <Helmet>
+                <title>All Jobs | CareerPath</title>
+            </Helmet>
             <div className="flex flex-col justify-center items-center space-y-2">
                 <h2 className='text-3xl font-semibold capitalize text-center'>
-                Find Your Dream Job - Explore Open Positions
+                    Find Your Dream Job - Explore Open Positions
                 </h2>
                 <p className="text-center md:w-[80%]">
-                Discover a wide range of exciting career opportunities across various industries. Search by job title, category, or location to find the perfect fit for your skills and experience. Apply directly from our platform and take the next step in your career journey.
+                    Discover a wide range of exciting career opportunities across various industries. Search by job title, category, or location to find the perfect fit for your skills and experience. Apply directly from our platform and take the next step in your career journey.
                 </p>
             </div>
             <div>

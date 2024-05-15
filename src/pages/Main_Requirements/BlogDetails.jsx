@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const BlogDetails = () => {
     const blog = useLoaderData();
@@ -7,6 +8,9 @@ const BlogDetails = () => {
     const { blogImg, que, answer, writer, totalLikes, postDate } = blog
     return (
         <div className="max-w-2xl md:px-6 py-5 md:py-16 mx-auto space-y-12">
+             <Helmet>
+                <title>Blog Details | CareerPath</title>
+            </Helmet>
             <article className="space-y-8">
                 <div>
                     <img src={blogImg} alt="" />
