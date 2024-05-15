@@ -19,10 +19,10 @@ const JobCard = ({ job }) => {
 
     const { _id, jobTitle, postingDate, salaryRange, deadline, applicantsNumber } = job
     return (
-        <div className='w-full max-w-sm px-3 py-6 bg-white rounded-md shadow-md hover:shadow-2xl border hover:scale-[1.025] transition-all space-y-2'>
+        <div className="w-full max-w-sm px-3 py-6 bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')] rounded-md shadow-md hover:shadow-2xl hover:scale-[1.025] transition-all space-y-2 text-black">
             <div className='flex justify-between items-center'>
 
-                <h1 className='text-xl font-semibold text-gray-800 '>
+                <h1 className='text-xl font-semibold '>
                     {jobTitle}
                 </h1>
 
@@ -37,15 +37,15 @@ const JobCard = ({ job }) => {
             </div>
 
             <div className='flex  flex-col'>
-                <p className='text-gray-800 '>
+                <p className=''>
                     {job?.user.name}
                 </p>
-                <p className='text-gray-600 flex items-center gap-1'>
+                <p className='flex items-center gap-1'>
                     {new Date(postingDate).toLocaleDateString()}
                 </p>
             </div>
 
-            <div className='font-medium text-gray-600 flex items-center gap-1'>
+            <div className='font-medium flex items-center gap-1'>
                 <span className='text-lg'><AiOutlineDollarCircle /></span>
                 <p className='flex items-center'>
                     {<BsCurrencyDollar />}{`${salaryRange.min_price}`} to
@@ -64,7 +64,7 @@ const JobCard = ({ job }) => {
             </div>
 
             <Link to={`/job/${_id}`}>
-                <button onClick={handleCheckLogin} className="btn w-full bg-[#2557a7] hover:bg-[#0d2d5e] text-white mt-4 rounded-ful">View Details</button>
+                <button onClick={handleCheckLogin} className="btn border-0 w-full bg-[#2557a7] hover:bg-[#0d2d5e] text-white mt-4 rounded-ful">View Details</button>
             </Link>
         </div>
     )
