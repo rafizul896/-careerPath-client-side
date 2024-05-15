@@ -15,13 +15,14 @@ const JobDetails = () => {
     const { user } = useAuth();
     const today = new Date();
     const { _id, jobTitle, category, postingDate, deadline, description, salaryRange, pictureURL, applicantsNumber } = job;
+    const dead = new Date(deadline).toDateString()
 
     const handleFromSuumit = async (e) => {
         e.preventDefault();
         if (user?.email === job.user?.email) {
             return toast.error('Action not permitted!')
         }
-        if (today > deadline) {
+        if (today.toDateString() > dead) {
             return toast.error('job deadline is over')
         }
         const from = e.target;
