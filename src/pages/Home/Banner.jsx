@@ -28,7 +28,7 @@ const Banner = () => {
                     <div
                         className='w-full bg-center bg-cover h-[35rem] rounded-lg'
                         style={{
-                            backgroundImage: `url(${'https://i.imghippo.com/files/2tWOH1715667734.png'})`,
+                            backgroundImage: `url(${'https://i.ibb.co/rt50rPq/2t-WOH1715667734.png'})`,
                         }}
                     >
                         <div className='flex items-center justify-center w-full h-full bg-gray-900/50 rounded-lg'>
@@ -46,7 +46,7 @@ const Banner = () => {
                     <div
                         className='w-full bg-center bg-cover h-[35rem] rounded-lg'
                         style={{
-                            backgroundImage: `url(${'https://i.imghippo.com/files/0putE1715667270.jpg'})`,
+                            backgroundImage: `url(${'https://i.ibb.co/6tt2jS9/banner-2.jpg'})`,
                         }}
                     >
                         <div className='flex items-center justify-center w-full h-full bg-gray-900/50 rounded-lg'>
@@ -65,7 +65,7 @@ const Banner = () => {
                     <div
                         className='w-full bg-center bg-cover h-[35rem] rounded-lg'
                         style={{
-                            backgroundImage: `url(${'https://i.imghippo.com/files/aUkGt1715667342.jpg'})`,
+                            backgroundImage: `url(${'https://i.ibb.co/QMRF9nB/banner-1.jpg'})`,
                         }}
                     >
                         <div className='flex items-center justify-center w-full h-full bg-gray-900/50 rounded-lg'>

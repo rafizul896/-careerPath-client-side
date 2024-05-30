@@ -58,7 +58,7 @@ const JobDetails = () => {
             <Helmet>
                 <title>{jobTitle} | CareerPath</title>
             </Helmet>
-            <div className="flex py-5 md:my-10 flex-col lg:flex-row justify-around gap-5 rounded-md items-center min-h-[calc(100vh-306px)] md:w-[90%] mx-auto bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')] text-black">
+            <div className="flex py-5 md:my-10 flex-col lg:flex-row justify-around gap-5 rounded-md items-center min-h-[calc(100vh-306px)] md:w-[90%] mx-auto bg-[url('https://i.ibb.co/hch8Kbm/ix-GTl1715763309.png')] text-black">
                 <div className="flex-1">
                     <img src={pictureURL} alt="" />
                 </div>

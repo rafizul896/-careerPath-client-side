@@ -19,7 +19,7 @@ const JobCard = ({ job }) => {
 
     const { _id, jobTitle, postingDate, salaryRange, deadline, applicantsNumber } = job
     return (
-        <div className="w-full max-w-sm px-3 py-6 bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')] rounded-md shadow-md hover:shadow-2xl hover:scale-[1.025] transition-all space-y-2 text-black">
+        <div className="w-full max-w-sm px-3 py-6 bg-[url('https://i.ibb.co/hch8Kbm/ix-GTl1715763309.png')] rounded-md shadow-md hover:shadow-2xl hover:scale-[1.025] transition-all space-y-2 text-black">
             <div className='flex justify-between items-center'>
 
                 <h1 className='text-xl font-semibold '>

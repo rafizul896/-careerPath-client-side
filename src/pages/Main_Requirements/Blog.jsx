@@ -27,7 +27,7 @@ const Blog = () => {
             <h1 className="text-2xl font-semibold">Blog</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-5 mb-14">
                 {blogs.map(blog =>
-                    <Link to={`/blog/${blog._id}`} key={blog._id} className="text-black shadow-md hover:shadow-xl hover:scale-[1.025] transition-all rounded-lg bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')]">
+                    <Link to={`/blog/${blog._id}`} key={blog._id} className="text-black shadow-md hover:shadow-xl hover:scale-[1.025] transition-all rounded-lg bg-[url('https://i.ibb.co/hch8Kbm/ix-GTl1715763309.png')]">
                         <figure><img className="rounded-t-lg" src={blog.blogImg}/></figure>
                         <div className="px-3 py-8 space-y-3">
                             <h2 className="card-title">{blog.que}</h2>

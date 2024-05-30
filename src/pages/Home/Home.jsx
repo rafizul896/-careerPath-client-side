@@ -58,7 +58,7 @@ const Home = () => {
             {/*job matching*/}
             {
                 !user &&
-                <div className="rounded-md flex flex-col justify-center items-center my-12 p-14 space-y-4 bg-[url('https://i.imghippo.com/files/ixGTl1715763309.png')]">
+                <div className="rounded-md flex flex-col justify-center items-center my-12 p-14 space-y-4 bg-[url('https://i.ibb.co/hch8Kbm/ix-GTl1715763309.png')]">
                     <h1 className="text-center text-3xl font-bold">Try job matching today</h1>
                     <Link to='/register'>
                         <button className="px-5 py-4 text-lg font-medium text-white bg-[#2557a7] rounded-md hover:bg-[#0d2d5e]">Setup your profile now</button>

@@ -11,7 +11,7 @@ const Root = () => {
                     <Outlet></Outlet>
                 </div>
             </div>
-            <div className="bg-[url('https://i.imghippo.com/files/bjIsR1715741214.png')] text-white bg-cover bg-no-repeat">
+            <div className="bg-[url('https://i.ibb.co/BPqXNY7/7.png')] text-white bg-cover bg-no-repeat">
             <Footer></Footer>
             </div>
         </div>
