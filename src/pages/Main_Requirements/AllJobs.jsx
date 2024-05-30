@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 const AllJobs = () => {
     const [count, setCount] = useState('')
     // const [jobs, setJobs] = useState([]);
+    const [filter, setFilter] = useState('')
+    const [sort, setSort] = useState('');
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1)
     const [search, setSearch] = useState('');
@@ -15,13 +17,13 @@ const AllJobs = () => {
     const queryClient = useQueryClient();
 
     const getData = async () => {
-        const { data } = await axios(`https://job-seeking-flax.vercel.app/all-jobs?page=${currentPage}&size=${itemsPerPage}&search=${search}`)
+        const { data } = await axios(`https://job-seeking-flax.vercel.app/all-jobs?page=${currentPage}&size=${itemsPerPage}&search=${search}&filter=${filter}&sort=${sort}`)
         return data;
     }
 
     const { data: jobs = [], isLoading } = useQuery({
         queryFn: () => getData(),
-        queryKey: ['jobs']
+        queryKey: ['jobs',sort]
     })
 
     useEffect(() => {
@@ -43,11 +45,18 @@ const AllJobs = () => {
         const text = e.target.search.value;
         setSearch(text);
     }
+    // reset
+    const handleReset = () => {
+        setFilter('');
+        setSort('');
+        setSearchText('')
+        setSearch('')
+    }
 
     if (isLoading) {
         return <Loader></Loader>
     }
-    
+
     queryClient.invalidateQueries({ queryKey: ['jobs'] },)
 
     return (
@@ -65,7 +74,21 @@ const AllJobs = () => {
             </div>
             <div>
                 <div className='flex flex-col md:flex-row justify-center items-center gap-5 mt-5'>
-
+                    <div>
+                        <select
+                            onChange={e => { setFilter(e.target.value); setCurrentPage(1) }}
+                            value={filter}
+                            name='category'
+                            id='category'
+                            className='border p-4 rounded-lg'
+                        >
+                            <option value=''>All Jobs</option>
+                            <option value='On Site'>On Site</option>
+                            <option value='Remote'>Remote</option>
+                            <option value='Part-Time'>Part-Time</option>
+                            <option value='Hybrid'>Hybrid</option>
+                        </select>
+                    </div>
                     <form onSubmit={handleSearch}>
                         <div className='flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>
                             <input
@@ -83,7 +106,22 @@ const AllJobs = () => {
                             </button>
                         </div>
                     </form>
-
+                    <div>
+                        <select
+                            onChange={e => {
+                                setSort(e.target.value)
+                            }}
+                            value={sort}
+                            name='category'
+                            id='category'
+                            className='border p-4 rounded-md'
+                        >
+                            <option value=''>Sort By Deadline</option>
+                            <option value='dsc'>Descending Order</option>
+                            <option value='asc'>Ascending Order</option>
+                        </select>
+                    </div>
+                    <button onClick={handleReset} className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 transition-colors duration-300 transform bg-[#2557a7] rounded-md hover:bg-[#0d2d5e]'>Reset</button>
                 </div>
                 <section className='py-7'>
 
