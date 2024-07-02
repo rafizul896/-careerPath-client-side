@@ -1,6 +1,7 @@
 Wibsite Name : CareerPath
 
 live site link : [CareerPath](https://assignment-eleven-e0849.web.app/)
+server site link : [server](https://github.com/rafizul896/careerPath-server-side)
 
 characteristics of my website:
  * Component-Based Architecture.
@@ -20,4 +21,6 @@ Used npm package name:
  * React tabs.
  * Etc.
 
-My selected category's name : assignment_category_0003
+## Installation and Setup
+- Includes steps to clone the repository, install dependencies, set up environment variables, and run the development server.
+- **Environment Variables**: Provides instructions to create a `.env` file and set the necessary environment variables for the project.
